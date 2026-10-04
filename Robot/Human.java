@@ -15,5 +15,6 @@ public class Human extends Actor
     public void act()
     {
         // Add your action code here.
+        turn(5);
     }
 }

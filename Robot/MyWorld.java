@@ -28,5 +28,9 @@ public class MyWorld extends World
     {
         Human human = new Human();
         addObject(human,30,36);
+        Apple apple = new Apple();
+        addObject(apple,429,32);
+        Apple apple2 = new Apple();
+        addObject(apple2,42,354);
     }
 }

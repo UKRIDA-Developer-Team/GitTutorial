@@ -22,15 +22,42 @@ Most tutorials teach through one medium, usually text with a code block. Learner
 
 Shell courses are separate from the Git course. Cross-course links point to each other where concepts overlap, such as `git add` working the same way in Bash and PowerShell.
 
+### Git course sequence
+
+| # | Lesson |
+| --- | --- |
+| 00 | Version Control and the Git Model |
+| 01 | Git Basics: Commits and Areas |
+| 02 | Git Basics: The Wider Map |
+| 03 | Your First Commit |
+| 04 | Branches and HEAD |
+| 05 | Merging and Conflicts |
+| 06 | Undo and Recovery |
+| 07 | Remotes are Copies |
+| 08 | Pull Requests |
+| 09 | Rebase for Clean History |
+| 10–14 | Under the hood |
+| 15 | Authentication and Identity |
+| 16 | Forks and Upstream |
+| 17 | Issues and Planning |
+| 18 | Review and Merge at Scale |
+| 19 | Actions and CI |
+| 20 | Releases, Tags, and Security |
+| 21 | Capstone |
+
+The capstone format is not defined yet. It is exempt from the core lesson block minimum until its format is decided.
+
 ### Briefs
 
-A brief is a composition of typed content blocks, not a separate course. It contains no new lessons, objectives, quizzes, or scenarios; it links to the practice in the course it draws from.
+A brief is a composition of typed content blocks, not a separate course. It contains no new lessons, objectives, quizzes, or scenarios. Assessments are separate artifacts; a quiz or scenario may point to a lesson, and a lesson never depends on one.
+
+A course may have any number of briefs. A brief may cover the whole course, a subset of it, or a split part such as essentials and team workflows. Briefs are independent: the site decides whether to present one, several, or a chooser. The content does not encode that choice.
 
 | Brief | Course | Status | Description |
 | --- | --- | --- | --- |
-| `nutshell` | `git-github` | Planned | A short, self-contained teaching material assembled from the core lessons' blocks |
+| `nutshell` | `git-github` | Planned | The practical path: lessons 00–09 and 15–20 in one brief |
 
-The Nutshell is the first brief. It is built from the same source as the full course, so a fix to a lesson propagates to the brief.
+The Nutshell is the first brief. It is built from the same source as the full course, so a fix to a lesson propagates to the brief. Splitting it later into parts such as `nutshell-essentials` and `nutshell-team` is a composition change, not a schema change, and the combined brief can coexist with those parts.
 
 ## Output types (renderers)
 
@@ -77,17 +104,23 @@ Approved block types:
 | Type | Purpose | Required in core lessons |
 | --- | --- | --- |
 | `Idea` | One-sentence takeaway | Yes |
-| `Explain` | Short explanation | Optional |
+| `Explain` | Short explanation | Yes |
 | `Diagram` | Visual model with alt text | When a visual helps |
 | `Commands` | Command table | When the lesson teaches commands |
 | `Example` | Concrete walkthrough | Optional |
-| `Warning` | Common mistake | Yes |
-| `Practice` | Links to the lesson's quiz or scenario | Yes |
+| `Warning` | Common mistake | Optional |
+| `Question` | Pose a teaching question and answer it inline; not an assessment | Optional |
 | `Recap` | One-line checklist item | Optional |
 
-A block ID is lowercase kebab-case, descriptive, and unique within its lesson (for example, `branch-is-a-label`, not `b1`). Reference a block as `<lesson-folder>#<block-id>`, for example `03-branches-and-head#branch-is-a-label`. Block IDs are stable: renaming one requires updating every reference.
+A block ID is lowercase kebab-case, descriptive, and unique within its lesson (for example, `branch-is-a-label`, not `b1`). Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`. Block IDs are stable: renaming one requires updating every reference.
+
+A `Question` block is teaching content. It poses a concrete situation and answers it in the same block. It is not a quiz: it has no hidden answer, scoring, or objective.
 
 Blocks are content, not lessons. They have no completion state, prerequisites, objectives, quizzes, or scenarios. A block must make sense on its own, without "as we saw above" or other context from the surrounding lesson.
+
+A lesson may assume earlier lessons in the same course. The full explanation of a concept belongs to the lesson that introduces it. Later lessons may restate it in a one-line `Recap`, then apply it with commands or examples. They do not copy the full block or create a second definition.
+
+Assessments are separate artifacts. A lesson exists without a quiz. A quiz may point to a lesson and use that lesson's objectives, or stand alone and define its own. A lesson never links to a quiz.
 
 ### Brief composition
 
@@ -112,15 +145,43 @@ course: git-github
 
 include:
   lessons:
-    - 01-version-control-basics
-    # ... through 08-rebase-for-clean-history
-  blocks: [idea, diagram, commands, warning]
+    - 00-version-control-basics
+    - 01-git-basics-commits
+    - 02-git-basics-map
+    - 03-first-commit
+    - 04-branches-and-head
+    - 05-merging-and-conflicts
+    - 06-undo-and-recovery
+    - 07-remotes-are-copies
+    - 08-pull-requests
+    - 09-rebase-for-clean-history
+    # 10-14 are under-the-hood; add here when needed.
+    - 15-auth-and-identity
+    - 16-forks-and-upstream
+    - 17-issues-and-planning
+    - 18-review-and-merge-at-scale
+    - 19-actions-and-ci
+    - 20-releases-tags-and-security
+  blocks: [idea, explain, diagram, commands, warning, question]
 
 intro: intro.md
 outro: outro.md
 ```
 
-If a lesson has multiple blocks of the same type and the brief needs only one, list explicit block IDs instead.
+`lessons` may list any subset of the course's lessons. The `blocks` list is a filter. A lesson entry may be a folder name or an object that narrows the block types for that lesson:
+
+```yaml
+include:
+  lessons:
+    - 01-git-basics-commits
+    - lesson: 16-forks-and-upstream
+      blocks: [idea, explain, warning]
+  blocks: [idea, explain, diagram, commands, warning, question]
+```
+
+A lesson entry without its own `blocks` inherits the brief-level filter. This keeps a brief short without changing the block schema.
+
+A course may have one brief, several focused briefs, or a combined brief plus split parts. Splitting or combining briefs changes only the manifests; the blocks stay canonical. `include.briefs` (a brief composed from other briefs), `exclude`, and ordering metadata are possible later extensions, not part of the schema yet.
 
 Content comes first. Brief rendering is a separate workstream and must not block content authoring. Future layouts may include a page, slide deck, script or storyboard, and illustration; those are rendering decisions, not content requirements.
 
@@ -129,8 +190,11 @@ Content comes first. Brief rendering is a separate workstream and must not block
 - Compose, don't copy. One canonical block; lessons and briefs reference it.
 - Keep blocks self-contained and focused on one idea.
 - Use stable IDs and the approved block types.
-- Core lessons must stand alone without the brief.
+- Core lessons stand alone from the brief, not from the course sequence. A learner must never need the brief to understand a lesson; a lesson may assume earlier lessons.
+- Teach a concept once, in the lesson that introduces it. Later lessons may recap it in one line, then apply it.
 - Briefs add no new teaching content or assessments.
+- Quizzes, flashcards, and scenarios are separate from lessons and blocks. A lesson never depends on an assessment.
+- Briefs may be split or combined; composition lives in `brief.yaml`, never in lesson text.
 - Don't put layout language in content.
 - Put per-block media in `media/blocks/<block-id>/` and include alt text.
 - Don't block-ify prose that only works in one lesson.
@@ -180,7 +244,7 @@ hints:
 xp: 20
 ```
 
-Quizzes and flashcards reference the same `objective`, so one concept is practiced in several formats.
+A quiz may point to a lesson and use that lesson's `objective` IDs, or stand alone with its own. Scenarios and flashcards also reference objectives, so one concept can be practiced in several formats without making the lesson depend on an assessment.
 
 ## Tech stack
 
@@ -231,16 +295,16 @@ Tags such as `v0.1.0` mark course releases.
 GitTutorial/
 ├── courses/
 │   ├── git-github/
-│   │   ├── 01-version-control-basics/
+│   │   ├── 00-version-control-basics/
 │   │   │   ├── lesson.md          # typed blocks
 │   │   │   ├── objectives.yaml
-│   │   │   ├── quiz.yaml
-│   │   │   ├── scenario.yaml
-│   │   │   ├── script.md
 │   │   │   └── media/
 │   │   │       └── blocks/
-│   │   │           └── snapshots-not-copies/
-│   │   └── briefs/
+│   │   │           └── delta-vs-snapshot/
+│   │   ├── 01-git-basics-commits/
+│   │   ├── 02-git-basics-map/
+│   │   ├── 03-first-commit/
+│   │   └── briefs/                  # one folder per brief; more may be added
 │   │       └── nutshell/
 │   │           ├── brief.yaml
 │   │           ├── intro.md

@@ -11,7 +11,7 @@ Lessons are composed of typed, self-contained blocks. Blocks are the reusable un
 ## Key principles
 
 1. **Content is the source of truth.** Never hand-edit generated output (`dist/`, the wiki, or rendered pages). Change the source in `courses/` or the renderer in `shared/`.
-2. **One concept, many formats.** Lessons, quizzes, flashcards, and scenarios reference the same `objective` ID in `objectives.yaml`. Don't create a second definition of a concept.
+2. **One concept, one objective.** Lessons define objectives in `objectives.yaml`; quizzes, flashcards, and scenarios reference those IDs. A quiz may point to a lesson and use its objectives, or stand alone with its own. Don't create a second definition of a concept.
 3. **Renderers don't know about the site layout.** Keep site-specific logic (navigation, theme, routing) in `site/`, not in `shared/renderers/`.
 4. **The sandbox grades state, not commands.** A scenario passes when the repository state matches `goal`, regardless of which commands produced it. Don't add grading based on exact command sequences.
 5. **Keep the sandbox to taught commands.** The engine implements only the commands listed in a scenario's `allowed_commands` and the course's command set. Don't wire it to the real Git binary or the GitHub API.
@@ -47,16 +47,16 @@ If a content validation script exists (`npm run validate`), run it after editing
 
 ## Content rules
 
-- Each lesson folder contains `lesson.md`, `objectives.yaml`, and optionally `quiz.yaml`, `scenario.yaml`, `script.md`, and `media/`. `lesson.md` is composed of typed blocks; see [Content blocks](#content-blocks).
-- Every core lesson must include one `Idea`, one `Warning`, and one `Practice` block. Add `Commands` when the lesson teaches commands, and `Diagram` when a visual model helps.
+- Each lesson folder contains `lesson.md` and `objectives.yaml`, plus optional media. Quizzes, scenarios, and scripts are separate artifacts; they are not required for a lesson and a lesson never links to them. `lesson.md` is composed of typed blocks; see [Content blocks](#content-blocks).
+- Every core lesson must include one `Idea` and one `Explain`. Add `Commands` when the lesson teaches commands, and `Diagram` when a visual model helps. `Warning` and `Question` are optional. The capstone is exempt until its format is defined.
 - A brief lives in `courses/<course>/briefs/<name>/` and contains `brief.yaml` plus optional `intro.md` and `outro.md`. It has no `objectives.yaml`, `quiz.yaml`, or `scenario.yaml`.
 - Briefs add no new teaching content. If a brief needs a concept that no core lesson covers, add it to a core lesson first.
-- Every `objective` referenced in a quiz, scenario, or flashcard must exist in that lesson's `objectives.yaml`. Validation should fail otherwise.
+- Every objective referenced by a quiz, scenario, or flashcard must exist in that artifact's source `objectives.yaml`. A quiz that points to a lesson uses that lesson's objectives; a standalone quiz defines its own. Validation should fail otherwise.
 - Object IDs use lowercase dot notation (for example, `git.branching.recover-detached`).
 - Scenario `start` and `goal` states must be valid: every branch and HEAD must point to a commit that exists, and commit parents must exist.
 - Scenario `allowed_commands` must only list commands the sandbox engine implements.
 - Each scenario needs at least one hint, ordered from least to most revealing.
-- Lesson folders are numbered (`01-`, `02-`) to set order. Don't rename existing folders without updating links.
+- Lesson folders are numbered (`00-`, `01-`) to set order. Don't rename existing folders without updating links.
 - Write in plain English. Don't add a lesson's content to the wiki manually.
 
 ## Content blocks
@@ -84,7 +84,7 @@ A branch is a name that points at a commit.
 - Blocks are level-2 headings. A block ends at the next level-2 heading.
 - The type is the heading prefix before the colon, or the whole heading when there is no colon. The ID is the `{#...}` value.
 - Block IDs are lowercase kebab-case, descriptive, and unique within the lesson. Use `branch-is-a-label`, not `b1` or `idea2`.
-- Reference a block as `<lesson-folder>#<block-id>`, for example `03-branches-and-head#branch-is-a-label`.
+- Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`.
 - Never rename a block ID without updating every reference.
 - Non-block level-2 headings are allowed for narrative, but they are not extractable.
 
@@ -93,26 +93,30 @@ A branch is a name that points at a commit.
 | Type | Purpose | Required in core lessons |
 | --- | --- | --- |
 | `Idea` | One-sentence takeaway | Yes |
-| `Explain` | Short explanation | Optional |
+| `Explain` | Short explanation | Yes |
 | `Diagram` | Visual model with alt text | When a visual helps |
 | `Commands` | Command table | When the lesson teaches commands |
 | `Example` | Concrete walkthrough | Optional |
-| `Warning` | Common mistake | Yes |
-| `Practice` | Links to the lesson's quiz or scenario | Yes |
+| `Warning` | Common mistake | Optional |
+| `Question` | Pose a teaching question and answer it inline; not an assessment | Optional |
 | `Recap` | One-line checklist item | Optional |
 
 Do not add, remove, or rename a block type without maintainer approval. A command table may list several commands, but it must serve one teaching idea. If a block teaches two ideas, split it.
 
+A `Question` block is teaching content. It poses a concrete situation and answers it in the same block. It is not a quiz: it has no hidden answer, scoring, or objective.
+
 ### Briefs
 
-A brief is a composition of blocks, not a course. The Nutshell is the first brief. Briefs:
+A brief is a composition of blocks, not a course. The Nutshell is the first brief; a course may have more. Briefs:
 
 - contain no objectives, quizzes, or scenarios;
 - add no new teaching concepts;
-- link to existing practice;
 - draw only from lessons in the same course;
+- select any subset of the course's lessons, including the whole course;
 - select blocks by lesson and type, or by explicit block ID;
 - keep `intro.md` and `outro.md` to orientation and summary only.
+
+A course may have one brief, several focused briefs, or a combined brief plus split parts. Splitting or combining briefs is a composition change, not a schema change. Do not assume a course has exactly one brief or that a brief covers a fixed lesson range. The site decides whether to present one brief, several, or a chooser; the manifest does not name a layout or navigation path.
 
 A brief manifest looks like this:
 
@@ -123,15 +127,41 @@ course: git-github
 
 include:
   lessons:
-    - 01-version-control-basics
-    # ... through 08-rebase-for-clean-history
-  blocks: [idea, diagram, commands, warning]
+    - 00-version-control-basics
+    - 01-git-basics-commits
+    - 02-git-basics-map
+    - 03-first-commit
+    - 04-branches-and-head
+    - 05-merging-and-conflicts
+    - 06-undo-and-recovery
+    - 07-remotes-are-copies
+    - 08-pull-requests
+    - 09-rebase-for-clean-history
+    # 10-14 are under-the-hood; add here when needed.
+    - 15-auth-and-identity
+    - 16-forks-and-upstream
+    - 17-issues-and-planning
+    - 18-review-and-merge-at-scale
+    - 19-actions-and-ci
+    - 20-releases-tags-and-security
+  blocks: [idea, explain, diagram, commands, warning, question]
 
 intro: intro.md
 outro: outro.md
 ```
 
-Block order follows lesson order; the type list is a filter. If a lesson has multiple blocks of the same type and the brief needs only one, list the explicit block IDs instead.
+Block order follows lesson order; the type list is a filter. A lesson entry may be a folder name or an object that narrows the block types for that lesson:
+
+```yaml
+include:
+  lessons:
+    - 01-git-basics-commits
+    - lesson: 16-forks-and-upstream
+      blocks: [idea, explain, warning]
+  blocks: [idea, explain, diagram, commands, warning, question]
+```
+
+An entry without its own `blocks` inherits the brief-level filter. `include.briefs`, `exclude`, and ordering metadata are possible later extensions, not part of the schema yet.
 
 ### Media
 
@@ -149,16 +179,19 @@ Block order follows lesson order; the type list is a filter. If a lesson has mul
 5. **One idea per block.** If a block teaches two ideas, split it. Do not split a single explanation into sentence-level fragments.
 6. **Stable IDs.** Use lowercase kebab-case, descriptive, and unique within the lesson. Never rename a block without updating every brief and reference.
 7. **Fixed vocabulary.** Only the approved block types. Adding, removing, or renaming a type is a schema change and needs maintainer approval.
-8. **Core lessons stand alone.** A learner must never need the brief to understand a lesson. The brief is optional.
+8. **Core lessons stand alone from the brief, not from the course sequence.** A learner must never need the brief to understand a lesson. A lesson may assume earlier lessons in the same course.
 9. **Briefs add no teaching content.** Intro and outro may orient or summarize. They must not introduce a new concept, command, or objective.
-10. **Briefs have no assessments.** No `objectives.yaml`, `quiz.yaml`, or `scenario.yaml` in a brief. Link to the lesson's existing practice.
+10. **Briefs have no assessments.** No `objectives.yaml`, `quiz.yaml`, or `scenario.yaml` in a brief.
 11. **No layout language.** Don't write "left," "right," "slide," "video," "click," or "on the next page." Content describes the concept, not the presentation.
 12. **Media is part of the block.** Put per-block assets in `media/blocks/<block-id>/`; include alt text; don't swap media per output.
 13. **Don't block-ify everything.** Prose that only works in one lesson stays prose. Blocks are for reusable teaching units, not every paragraph.
-14. **No duplicated concepts.** If two lessons need the same block, promote it to a shared block and reference it. Do not copy. That's a schema change.
+14. **Concept first, application later.** The lesson that introduces a concept owns its canonical explanation. Later lessons may restate it in a one-line `Recap`, then apply it with commands or examples. Do not copy the full block or create a second definition. If the same block is genuinely needed in two lessons, promote it to a shared block instead of copying it; that is a schema change.
 15. **Platform variants stay inline.** Use `unix:`/`windows:` variants inside a block. Don't create platform-specific blocks.
 16. **Never hand-edit generated output.** Briefs and pages are composed. Edit the block or manifest, then regenerate.
 17. **Validate before merging.** Block type, ID uniqueness, required blocks, brief references, media alt text, and lesson objectives must pass validation.
+18. **Briefs are not mutually exclusive.** The same block may appear in several briefs. Splitting or combining briefs changes manifests, not blocks.
+19. **Presentation is not composition.** A brief manifest does not name a layout, route, or navigation path. The site decides whether to show one brief, several, or a chooser.
+20. **Assessments are separate artifacts.** A lesson exists without a quiz. A quiz may point to a lesson and use its objectives, or stand alone and define its own. A lesson never links to a quiz.
 
 ## Code rules
 
@@ -168,6 +201,7 @@ Block order follows lesson order; the type list is a filter. If a lesson has mul
 - Write tests for every engine command and every renderer's core logic in `tests/`.
 - Renderers accept data and return output. They shouldn't read files from `courses/` directly; the build passes data in.
 - Block extraction and brief composition are build concerns. They get tests when implemented; renderers still receive resolved data.
+- Brief composition is data. Read every `briefs/*/brief.yaml`; never hard-code a lesson range, a single brief, or the Nutshell's scope. A validator that only knows part of the course is wrong. Accept lesson entries as either a folder name or `{lesson, blocks}` and normalize before resolving.
 - Don't add block types or change block IDs in a rendering PR; that's a content schema change.
 - Components in `shared/components/` must be framework islands, not full pages.
 - Don't add dependencies without a reason. Prefer what's already in `package.json`.
@@ -195,10 +229,10 @@ The wiki is generated by `wiki.yml` from text content and pushed to `<repo>.wiki
 
 1. Tests pass (`npm test`).
 2. Build passes (`npm run build`).
-3. Content validation passes if `courses/` changed, including block syntax, IDs, required blocks, brief references, and media alt text.
+3. Content validation passes if `courses/` changed, including block syntax, IDs, required blocks, brief references (including per-lesson `blocks` overrides), and media alt text.
 4. New engine commands or renderers have tests.
 5. The change is on a branch, not `main`.
-6. Briefs are compositions only: no copied block text, new objectives, quizzes, or scenarios.
+6. Briefs are compositions only: no copied block text, new objectives, quizzes, or scenarios. Splitting a brief does not duplicate lesson text.
 7. Content and rendering changes are in separate PRs.
 8. Summarize what changed and what you didn't verify.
 
@@ -213,3 +247,5 @@ The wiki is generated by `wiki.yml` from text content and pushed to `<repo>.wiki
 - Adding a backend, accounts, authentication, or any external API
 - Changing the deployment setup or branch strategy
 - Adding a new runtime dependency that affects the bundle size significantly
+
+Splitting the Nutshell into parts is a composition change, not a schema change. Propose it in a content PR; it needs review, not a new schema decision.

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Four generations of version control</title>
+  <desc id="desc">A timeline with four stages: local file tools such as RCS, centralized servers such as CVS and Subversion, distributed systems such as Git and Mercurial, and hosted collaboration platforms such as GitHub and GitLab.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7d8fa3"/>
+    </marker>
+    <style>
+      .panel { fill: #f7f9fc; stroke: #c9d3df; stroke-width: 2; rx: 14; }
+      .now { fill: #e7f7ee; stroke: #2f8f5b; stroke-width: 2; rx: 14; }
+      .title { font: 700 19px system-ui, sans-serif; fill: #13202e; }
+      .years { font: 600 14px ui-monospace, monospace; fill: #2f5d8a; }
+      .body { font: 15px system-ui, sans-serif; fill: #526274; }
+      .line { stroke: #7d8fa3; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="panel" x="16" y="24" width="212" height="236"/>
+  <text class="title" x="40" y="66">Local tools</text>
+  <text class="years" x="40" y="94">1970s–1980s</text>
+  <text class="body" x="40" y="136">SCCS, RCS</text>
+  <text class="body" x="40" y="162">One file at a time</text>
+  <text class="body" x="40" y="188">One machine</text>
+  <text class="body" x="40" y="214">No shared project</text>
+  <text class="body" x="40" y="240">history</text>
+
+  <line class="line" x1="232" y1="142" x2="256" y2="142"/>
+
+  <rect class="panel" x="262" y="24" width="212" height="236"/>
+  <text class="title" x="286" y="66">Central server</text>
+  <text class="years" x="286" y="94">1990s–2000s</text>
+  <text class="body" x="286" y="136">CVS, Subversion</text>
+  <text class="body" x="286" y="162">One shared history</text>
+  <text class="body" x="286" y="188">Needs a connection</text>
+  <text class="body" x="286" y="214">Server is a single</text>
+  <text class="body" x="286" y="240">point of failure</text>
+
+  <line class="line" x1="478" y1="142" x2="502" y2="142"/>
+
+  <rect class="now" x="508" y="24" width="212" height="236"/>
+  <text class="title" x="532" y="66">Distributed</text>
+  <text class="years" x="532" y="94">mid-2000s</text>
+  <text class="body" x="532" y="136">Git, Mercurial</text>
+  <text class="body" x="532" y="162">Every clone has</text>
+  <text class="body" x="532" y="188">the full history</text>
+  <text class="body" x="532" y="214">Local commits,</text>
+  <text class="body" x="532" y="240">branches, and diffs</text>
+
+  <line class="line" x1="724" y1="142" x2="748" y2="142"/>
+
+  <rect class="panel" x="754" y="24" width="190" height="236"/>
+  <text class="title" x="778" y="66">Hosted</text>
+  <text class="years" x="778" y="94">2008 onward</text>
+  <text class="body" x="778" y="136">GitHub, GitLab</text>
+  <text class="body" x="778" y="162">Accounts, pull</text>
+  <text class="body" x="778" y="188">requests, issues,</text>
+  <text class="body" x="778" y="214">automation</text>
+
+  <text class="body" x="16" y="300">Each generation solved a limit of the one before it, without replacing the need for recorded history.</text>
+</svg>

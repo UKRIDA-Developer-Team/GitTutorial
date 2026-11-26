@@ -1,0 +1,17 @@
+title: Version Control and the Git Model
+blocks:
+  - version-control-is-recorded-history
+  - a-project-without-history
+  - history-of-version-control
+  - history-timeline
+  - what-a-vcs-records
+  - repository-holds-the-history
+  - snapshots-not-deltas
+  - rebuilding-a-version
+  - delta-vs-snapshot
+  - why-git-became-the-standard
+  - git-is-not-github
+  - does-git-still-matter
+  - what-comes-after-git
+  - recap-snapshots
+  - recap-git-is-local

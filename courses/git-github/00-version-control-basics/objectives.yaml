@@ -1,0 +1,15 @@
+objectives:
+  - id: git.vcs.purpose
+    description: Explain why a project needs recorded history.
+  - id: git.vcs.history
+    description: Describe how version control moved from file copies to centralized and distributed systems.
+  - id: git.vcs.records
+    description: Explain what a version control system records about each version.
+  - id: git.repo.concept
+    description: Describe a repository as the database that holds the recorded history.
+  - id: git.snapshot.model
+    description: Contrast Git's snapshot model with delta-based storage.
+  - id: git.git-vs-github
+    description: Distinguish Git, the version control tool, from GitHub, a hosting platform.
+  - id: git.vcs.landscape
+    description: Identify current alternatives to Git and explain why Git remains the default.

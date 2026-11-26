@@ -76,28 +76,56 @@ Briefs are content compositions, not renderers. The `brief` renderer is a separa
 
 ## Content blocks
 
-Lessons are composed of typed, self-contained blocks. A block is the smallest reusable teaching unit: one idea, one diagram, one command table, or one warning. Lessons render every block; briefs compose a subset.
+Lessons are composed of typed, self-contained blocks. A block is the smallest reusable teaching unit: one idea, one diagram, one command table, or one warning. Lessons render all of their blocks; briefs compose a subset.
 
-Blocks use a level-2 Markdown heading with a type prefix and a stable ID:
+Each lesson keeps its blocks in separate files:
 
-```md
-## Idea: A branch is a label {#branch-is-a-label}
-
-A branch is a name that points at a commit.
-
-## Commands {#branch-commands}
-
-| Command | What it does |
-| --- | --- |
-| `git branch feature` | Create a label at the current commit |
-| `git switch feature` | Move HEAD and update the working tree |
-
-## Warning: HEAD can detach {#branch-warning}
-
-`HEAD` can point directly at a commit. Create a branch before committing.
+```text
+00-version-control-basics/
+├── lesson.yaml
+├── objectives.yaml
+├── intro.md
+├── blocks/
+│   ├── 01-version-control-is-recorded-history.md
+│   ├── 02-a-project-without-history.md
+│   └── 03-history-of-version-control.md
+└── media/
+    └── blocks/
+        └── history-timeline/
 ```
 
-The type is the heading prefix before the colon, or the whole heading when there is no colon; the ID is the `{#...}` value.
+`lesson.yaml` owns the lesson title and block order:
+
+```yaml
+title: Version Control and the Git Model
+blocks:
+  - version-control-is-recorded-history
+  - a-project-without-history
+  - history-of-version-control
+```
+
+A block file contains YAML frontmatter and Markdown content:
+
+```md
+---
+type: Explain
+title: Snapshots, not deltas
+---
+
+Older version control systems often stored a file's first version and then a
+chain of changes, called deltas. A Git commit records a snapshot of the whole
+project.
+```
+
+- The filename has a two-digit ordering prefix and the block ID: `07-snapshots-not-deltas.md`.
+- The block ID is the filename without the prefix: `snapshots-not-deltas`.
+- `lesson.yaml` is the authoritative order. The prefix keeps the directory readable at a glance.
+- `type` must be one of the approved block types.
+- `title` is the readable heading. It must not contain a type prefix or block ID. It may be omitted when the body is a single statement, as with `Idea` and `Recap`; the renderer then shows the body without a heading.
+- The block body is ordinary Markdown. Do not repeat the title as a heading.
+- `intro.md` holds lesson-level prose, such as setup notes, that is not a reusable block.
+
+A block ID is lowercase kebab-case, descriptive, and unique within its lesson (for example, `branch-is-a-label`, not `b1`). Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`. Block IDs are stable: changing the numeric prefix is not an ID change; renaming the descriptive part is.
 
 Approved block types:
 
@@ -111,8 +139,6 @@ Approved block types:
 | `Warning` | Common mistake | Optional |
 | `Question` | Pose a teaching question and answer it inline; not an assessment | Optional |
 | `Recap` | One-line checklist item | Optional |
-
-A block ID is lowercase kebab-case, descriptive, and unique within its lesson (for example, `branch-is-a-label`, not `b1`). Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`. Block IDs are stable: renaming one requires updating every reference.
 
 A `Question` block is teaching content. It poses a concrete situation and answers it in the same block. It is not a quiz: it has no hidden answer, scoring, or objective.
 
@@ -189,17 +215,17 @@ Content comes first. Brief rendering is a separate workstream and must not block
 
 - Compose, don't copy. One canonical block; lessons and briefs reference it.
 - Keep blocks self-contained and focused on one idea.
-- Use stable IDs and the approved block types.
+- Use stable IDs, approved types, and the block-file layout.
 - Core lessons stand alone from the brief, not from the course sequence. A learner must never need the brief to understand a lesson; a lesson may assume earlier lessons.
 - Teach a concept once, in the lesson that introduces it. Later lessons may recap it in one line, then apply it.
 - Briefs add no new teaching content or assessments.
 - Quizzes, flashcards, and scenarios are separate from lessons and blocks. A lesson never depends on an assessment.
 - Briefs may be split or combined; composition lives in `brief.yaml`, never in lesson text.
 - Don't put layout language in content.
-- Put per-block media in `media/blocks/<block-id>/` and include alt text.
+- Put per-block media in `media/blocks/<block-id>/`; link it from the block file with a path relative to that file.
 - Don't block-ify prose that only works in one lesson.
 - If two lessons need the same block, promote it to a shared block instead of copying it.
-- Validate block IDs, references, required blocks, and media before merging.
+- Validate block files, IDs, prefix order, required blocks, and media before merging.
 
 See `AGENTS.md` for the full rules.
 
@@ -296,8 +322,12 @@ GitTutorial/
 ├── courses/
 │   ├── git-github/
 │   │   ├── 00-version-control-basics/
-│   │   │   ├── lesson.md          # typed blocks
+│   │   │   ├── lesson.yaml        # title and block order
 │   │   │   ├── objectives.yaml
+│   │   │   ├── intro.md
+│   │   │   ├── blocks/
+│   │   │   │   ├── 01-version-control-is-recorded-history.md
+│   │   │   │   └── 08-delta-vs-snapshot.md
 │   │   │   └── media/
 │   │   │       └── blocks/
 │   │   │           └── delta-vs-snapshot/

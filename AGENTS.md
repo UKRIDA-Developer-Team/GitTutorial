@@ -47,8 +47,9 @@ If a content validation script exists (`npm run validate`), run it after editing
 
 ## Content rules
 
-- Each lesson folder contains `lesson.md` and `objectives.yaml`, plus optional media. Quizzes, scenarios, and scripts are separate artifacts; they are not required for a lesson and a lesson never links to them. `lesson.md` is composed of typed blocks; see [Content blocks](#content-blocks).
+- Each lesson folder contains `lesson.yaml`, `objectives.yaml`, optional `intro.md`, and a `blocks/` directory. Each block is one Markdown file in `blocks/`. Quizzes, scenarios, and scripts are separate artifacts; they are not required for a lesson and a lesson never links to them.
 - Every core lesson must include one `Idea` and one `Explain`. Add `Commands` when the lesson teaches commands, and `Diagram` when a visual model helps. `Warning` and `Question` are optional. The capstone is exempt until its format is defined.
+- `lesson.yaml` owns the lesson title and the ordered list of block IDs. Block files use a two-digit order prefix in the filename, but `lesson.yaml` is the authoritative order.
 - A brief lives in `courses/<course>/briefs/<name>/` and contains `brief.yaml` plus optional `intro.md` and `outro.md`. It has no `objectives.yaml`, `quiz.yaml`, or `scenario.yaml`.
 - Briefs add no new teaching content. If a brief needs a concept that no core lesson covers, add it to a core lesson first.
 - Every objective referenced by a quiz, scenario, or flashcard must exist in that artifact's source `objectives.yaml`. A quiz that points to a lesson uses that lesson's objectives; a standalone quiz defines its own. Validation should fail otherwise.
@@ -61,32 +62,56 @@ If a content validation script exists (`npm run validate`), run it after editing
 
 ## Content blocks
 
-A block is a typed, self-contained section of a lesson. It is the smallest reusable teaching unit. Lessons render all blocks; briefs compose a subset.
+A block is a typed, self-contained Markdown file. It is the smallest reusable teaching unit. Lessons render all of their blocks; briefs compose a subset.
 
-### Block syntax
+### Block files
 
-Use a level-2 heading with a type prefix and a stable ID:
+A lesson contains `lesson.yaml`, `objectives.yaml`, an optional `intro.md`, a `blocks/` directory, and optional media:
 
-```md
-## Idea: A branch is a label {#branch-is-a-label}
-
-A branch is a name that points at a commit.
-
-## Commands {#branch-commands}
-
-| Command | What it does |
-| --- | --- |
-| `git branch feature` | Create a label at the current commit |
-| `git switch feature` | Move HEAD and update the working tree |
+```text
+00-version-control-basics/
+├── lesson.yaml
+├── objectives.yaml
+├── intro.md
+├── blocks/
+│   ├── 01-version-control-is-recorded-history.md
+│   ├── 02-a-project-without-history.md
+│   └── 03-history-of-version-control.md
+└── media/
+    └── blocks/
+        └── history-timeline/
 ```
 
-- The lesson title is level 1.
-- Blocks are level-2 headings. A block ends at the next level-2 heading.
-- The type is the heading prefix before the colon, or the whole heading when there is no colon. The ID is the `{#...}` value.
-- Block IDs are lowercase kebab-case, descriptive, and unique within the lesson. Use `branch-is-a-label`, not `b1` or `idea2`.
-- Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`.
-- Never rename a block ID without updating every reference.
-- Non-block level-2 headings are allowed for narrative, but they are not extractable.
+`lesson.yaml` lists the block IDs in reading order:
+
+```yaml
+title: Version Control and the Git Model
+blocks:
+  - version-control-is-recorded-history
+  - a-project-without-history
+  - history-of-version-control
+```
+
+Each block file has YAML frontmatter and a Markdown body:
+
+```md
+---
+type: Explain
+title: Snapshots, not deltas
+---
+
+Older version control systems often stored a file's first version and then a
+chain of changes, called deltas. A Git commit records a snapshot of the whole
+project.
+```
+
+- The filename format is `<two-digit-prefix>-<block-id>.md`, for example `08-delta-vs-snapshot.md`.
+- The block ID is the filename without the prefix: `delta-vs-snapshot`.
+- `lesson.yaml` is the authoritative order. The prefix keeps the directory readable at a glance.
+- `type` must be one of the approved block types.
+- `title` is the readable heading. It must not contain a type prefix or block ID. It may be omitted when the body is a single statement, as with `Idea` and `Recap`; the renderer then shows the body without a heading.
+- The body is ordinary Markdown. Do not repeat the title as a heading.
+- `intro.md` holds non-block lesson prose, such as setup notes.
 
 ### Approved block types
 
@@ -104,6 +129,14 @@ A branch is a name that points at a commit.
 Do not add, remove, or rename a block type without maintainer approval. A command table may list several commands, but it must serve one teaching idea. If a block teaches two ideas, split it.
 
 A `Question` block is teaching content. It poses a concrete situation and answers it in the same block. It is not a quiz: it has no hidden answer, scoring, or objective.
+
+### Block IDs and references
+
+- Block IDs use lowercase kebab-case and are unique within the lesson.
+- Keep the descriptive part stable. Changing the numeric prefix is not an ID change; renaming the descriptive part is.
+- Reference a block as `<lesson-folder>#<block-id>`, for example `04-branches-and-head#branch-is-a-label`.
+- Never rename a block ID without updating every brief and reference.
+- Non-block prose belongs in `intro.md`, not in a fake block.
 
 ### Briefs
 
@@ -177,18 +210,18 @@ An entry without its own `blocks` inherits the brief-level filter. `include.brie
 3. **A block is not a lesson.** Blocks have no completion state, prerequisites, objectives, quizzes, or scenarios. They are teaching content only.
 4. **Self-contained.** A block must make sense on its own. No "as we saw above," "the previous section," or unexplained pronouns. Define terms in the block.
 5. **One idea per block.** If a block teaches two ideas, split it. Do not split a single explanation into sentence-level fragments.
-6. **Stable IDs.** Use lowercase kebab-case, descriptive, and unique within the lesson. Never rename a block without updating every brief and reference.
-7. **Fixed vocabulary.** Only the approved block types. Adding, removing, or renaming a type is a schema change and needs maintainer approval.
+6. **Stable IDs.** Use lowercase kebab-case filenames after the prefix, descriptive, and unique within the lesson. Never rename the descriptive part without updating every brief and reference.
+7. **Fixed vocabulary.** Only the approved block types and frontmatter fields. Adding, removing, or renaming a type is a schema change and needs maintainer approval.
 8. **Core lessons stand alone from the brief, not from the course sequence.** A learner must never need the brief to understand a lesson. A lesson may assume earlier lessons in the same course.
 9. **Briefs add no teaching content.** Intro and outro may orient or summarize. They must not introduce a new concept, command, or objective.
 10. **Briefs have no assessments.** No `objectives.yaml`, `quiz.yaml`, or `scenario.yaml` in a brief.
 11. **No layout language.** Don't write "left," "right," "slide," "video," "click," or "on the next page." Content describes the concept, not the presentation.
-12. **Media is part of the block.** Put per-block assets in `media/blocks/<block-id>/`; include alt text; don't swap media per output.
-13. **Don't block-ify everything.** Prose that only works in one lesson stays prose. Blocks are for reusable teaching units, not every paragraph.
+12. **Media is part of the block.** Put per-block assets in `media/blocks/<block-id>/`; link them from the block file with paths relative to that file.
+13. **Don't block-ify everything.** Prose that only works in one lesson stays in `intro.md` or ordinary lesson prose. Blocks are for reusable teaching units, not every paragraph.
 14. **Concept first, application later.** The lesson that introduces a concept owns its canonical explanation. Later lessons may restate it in a one-line `Recap`, then apply it with commands or examples. Do not copy the full block or create a second definition. If the same block is genuinely needed in two lessons, promote it to a shared block instead of copying it; that is a schema change.
 15. **Platform variants stay inline.** Use `unix:`/`windows:` variants inside a block. Don't create platform-specific blocks.
 16. **Never hand-edit generated output.** Briefs and pages are composed. Edit the block or manifest, then regenerate.
-17. **Validate before merging.** Block type, ID uniqueness, required blocks, brief references, media alt text, and lesson objectives must pass validation.
+17. **Validate before merging.** Block frontmatter, filename prefixes, ID uniqueness, required blocks, lesson order, brief references, media alt text, and lesson objectives must pass validation.
 18. **Briefs are not mutually exclusive.** The same block may appear in several briefs. Splitting or combining briefs changes manifests, not blocks.
 19. **Presentation is not composition.** A brief manifest does not name a layout, route, or navigation path. The site decides whether to show one brief, several, or a chooser.
 20. **Assessments are separate artifacts.** A lesson exists without a quiz. A quiz may point to a lesson and use its objectives, or stand alone and define its own. A lesson never links to a quiz.

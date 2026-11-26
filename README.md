@@ -327,7 +327,7 @@ GitTutorial/
 │   │   │   ├── intro.md
 │   │   │   ├── blocks/
 │   │   │   │   ├── 01-version-control-is-recorded-history.md
-│   │   │   │   └── 08-delta-vs-snapshot.md
+│   │   │   │   └── 09-delta-vs-snapshot.md
 │   │   │   └── media/
 │   │   │       └── blocks/
 │   │   │           └── delta-vs-snapshot/

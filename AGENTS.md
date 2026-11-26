@@ -105,7 +105,7 @@ chain of changes, called deltas. A Git commit records a snapshot of the whole
 project.
 ```
 
-- The filename format is `<two-digit-prefix>-<block-id>.md`, for example `08-delta-vs-snapshot.md`.
+- The filename format is `<two-digit-prefix>-<block-id>.md`, for example `09-delta-vs-snapshot.md`.
 - The block ID is the filename without the prefix: `delta-vs-snapshot`.
 - `lesson.yaml` is the authoritative order. The prefix keeps the directory readable at a glance.
 - `type` must be one of the approved block types.

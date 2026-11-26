@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
+  <title id="title">Working tree, index, and repository</title>
+  <desc id="desc">Changes start in the working tree. Staging copies a selected version into the index. Committing records the index as a new snapshot in the repository. Editing the working tree after staging does not change the index.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .area { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
+      .work { fill: #eef6ff; stroke: #2f6fb3; stroke-width: 2; }
+      .index { fill: #fff7e6; stroke: #b57912; stroke-width: 2; }
+      .repo { fill: #eaf8ef; stroke: #2f8f5b; stroke-width: 2; }
+      .title { font: 700 23px system-ui, sans-serif; fill: #0f172a; }
+      .label { font: 600 17px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .cmd { font: 600 15px ui-monospace, monospace; fill: #0f172a; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #2f6fb3; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .file { fill: #ffffff; stroke: #64748b; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <text class="title" x="28" y="44">Where a change lives</text>
+
+  <rect class="work" x="28" y="82" width="260" height="250" rx="16"/>
+  <text class="label" x="52" y="118">Working tree</text>
+  <text class="note" x="52" y="144">The files you edit.</text>
+  <rect class="file" x="52" y="170" width="212" height="40" rx="7"/>
+  <text class="cmd" x="68" y="196">README.md</text>
+  <rect class="file" x="52" y="222" width="212" height="40" rx="7"/>
+  <text class="cmd" x="68" y="248">app.js</text>
+  <text class="note" x="52" y="294">Edited but not staged yet.</text>
+
+  <rect class="index" x="360" y="82" width="260" height="250" rx="16"/>
+  <text class="label" x="384" y="118">Index</text>
+  <text class="note" x="384" y="144">The next commit's selection.</text>
+  <rect class="file" x="384" y="170" width="212" height="40" rx="7"/>
+  <text class="cmd" x="400" y="196">README.md</text>
+  <rect class="file" x="384" y="222" width="212" height="40" rx="7"/>
+  <text class="cmd" x="400" y="248">(app.js not staged)</text>
+  <text class="note" x="384" y="294">Only staged changes are here.</text>
+
+  <rect class="repo" x="692" y="82" width="260" height="250" rx="16"/>
+  <text class="label" x="716" y="118">Repository</text>
+  <text class="note" x="716" y="144">Recorded history.</text>
+  <rect class="file" x="716" y="170" width="212" height="40" rx="7"/>
+  <text class="cmd" x="732" y="196">commit a1b2c3d</text>
+  <rect class="file" x="716" y="222" width="212" height="40" rx="7"/>
+  <text class="cmd" x="732" y="248">commit d4e5f6a</text>
+  <text class="note" x="716" y="294">Each commit is a snapshot.</text>
+
+  <path class="line" d="M 292 190 L 352 190"/>
+  <text class="cmd" x="300" y="178">git add</text>
+
+  <path class="line" d="M 624 190 L 684 190"/>
+  <text class="cmd" x="632" y="178">git commit</text>
+
+  <path class="loop" d="M 158 336 C 158 386 264 386 264 344"/>
+  <text class="note" x="170" y="390">keep editing</text>
+</svg>

@@ -1,0 +1,19 @@
+title: "Git Basics: Commits and Areas"
+blocks:
+  - commit-is-a-snapshot
+  - what-a-commit-contains
+  - commit-anatomy
+  - three-areas
+  - three-areas-diagram
+  - how-git-compares-the-areas
+  - a-change-moves-through-the-areas
+  - status-cycle
+  - reading-status
+  - status-edge-cases
+  - what-will-be-committed
+  - clean-status-is-not-enough
+  - reading-a-real-commit
+  - staging-part-of-a-file
+  - recap-snapshot
+  - recap-three-areas
+  - recap-staging

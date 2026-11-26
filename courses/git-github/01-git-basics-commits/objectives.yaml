@@ -1,0 +1,13 @@
+objectives:
+  - id: git.commit.snapshot
+    description: Define a commit as a recorded snapshot of the project.
+  - id: git.commit.contents
+    description: Identify the snapshot, message, author metadata, parent, and hash in a commit.
+  - id: git.index.three-areas
+    description: Distinguish the working tree, the index, and the repository.
+  - id: git.status.lifecycle
+    description: Describe untracked, modified, staged, and committed changes.
+  - id: git.status.read
+    description: Read staged and unstaged sections of git status output.
+  - id: git.index.selection
+    description: Explain why editing after staging leaves a newer change out of the next commit.

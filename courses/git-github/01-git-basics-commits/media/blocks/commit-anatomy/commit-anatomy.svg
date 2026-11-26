@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 430" role="img" aria-labelledby="title desc">
+  <title id="title">The parts of a commit</title>
+  <desc id="desc">A commit object contains a tree that points to the project snapshot, a parent that points to the previous commit, author and committer metadata, a message, and a hash derived from its contents.</desc>
+  <defs>
+    <style>
+      .panel { fill: #f7f9fc; stroke: #c9d3df; stroke-width: 2; rx: 16; }
+      .commit { fill: #ffffff; stroke: #2f5d8a; stroke-width: 2.5; rx: 14; }
+      .head { font: 700 20px ui-monospace, monospace; fill: #13202e; }
+      .field { font: 600 15px ui-monospace, monospace; fill: #2f5d8a; }
+      .value { font: 15px system-ui, sans-serif; fill: #526274; }
+      .label { font: 700 16px system-ui, sans-serif; fill: #13202e; }
+      .note { font: 14px system-ui, sans-serif; fill: #526274; }
+      .line { stroke: #7d8fa3; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+
+  <rect class="panel" x="16" y="16" width="888" height="398"/>
+
+  <rect class="commit" x="40" y="56" width="400" height="318"/>
+  <text class="head" x="64" y="94">commit a1b2c3d</text>
+
+  <text class="field" x="64" y="136">tree</text>
+  <text class="value" x="128" y="136">d8329fc</text>
+
+  <text class="field" x="64" y="172">parent</text>
+  <text class="value" x="128" y="172">9fceb02</text>
+
+  <text class="field" x="64" y="208">author</text>
+  <text class="value" x="128" y="208">Ada &lt;ada@example.com&gt;</text>
+
+  <text class="field" x="64" y="244">committer</text>
+  <text class="value" x="128" y="244">Ada &lt;ada@example.com&gt;</text>
+
+  <text class="field" x="64" y="280">message</text>
+  <text class="value" x="128" y="280">Add README</text>
+
+  <text class="field" x="64" y="316">hash</text>
+  <text class="value" x="128" y="316">derived from all of the above</text>
+
+  <line class="line" x1="440" y1="136" x2="512" y2="112"/>
+  <line class="line" x1="440" y1="172" x2="512" y2="164"/>
+  <line class="line" x1="440" y1="222" x2="512" y2="220"/>
+  <line class="line" x1="440" y1="280" x2="512" y2="274"/>
+  <line class="line" x1="440" y1="316" x2="512" y2="330"/>
+
+  <text class="label" x="520" y="112">Tree</text>
+  <text class="note" x="520" y="134">The snapshot: file names,</text>
+  <text class="note" x="520" y="152">contents, and subdirectories.</text>
+
+  <text class="label" x="520" y="186">Parent</text>
+  <text class="note" x="520" y="208">The previous commit. A merge</text>
+  <text class="note" x="520" y="226">commit has more than one.</text>
+
+  <text class="label" x="520" y="262">Author and committer</text>
+  <text class="note" x="520" y="284">Who wrote the change and who</text>
+  <text class="note" x="520" y="302">applied it, with timestamps.</text>
+
+  <text class="label" x="520" y="338">Message and hash</text>
+  <text class="note" x="520" y="360">Why the change exists, and an</text>
+  <text class="note" x="520" y="378">identity derived from the contents.</text>
+</svg>

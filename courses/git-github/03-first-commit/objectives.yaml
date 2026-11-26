@@ -1,0 +1,13 @@
+objectives:
+  - id: git.repo.init
+    description: Create a repository with git init and identify the .git directory.
+  - id: git.identity.configure
+    description: Configure the name and email recorded in new commits.
+  - id: git.index.stage
+    description: Stage selected changes with git add.
+  - id: git.commit.create
+    description: Record staged changes with git commit and a message.
+  - id: git.log.read
+    description: Read commit history with git log --oneline.
+  - id: git.ignore.generated
+    description: Use .gitignore to keep generated files and secrets out of the repository.

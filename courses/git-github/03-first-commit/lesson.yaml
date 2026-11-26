@@ -1,0 +1,22 @@
+title: Your First Commit
+blocks:
+  - init-starts-a-repository
+  - init-and-status
+  - init-output
+  - what-git-init-creates
+  - staging-is-a-selection
+  - configure-identity
+  - identity-is-recorded
+  - stage-and-commit
+  - first-commit-example
+  - reading-the-first-commit
+  - diff-before-commit
+  - ignore-generated-files
+  - gitignore-patterns
+  - check-ignored-files
+  - staging-is-not-committing
+  - first-commit-errors
+  - what-goes-into-the-first-commit
+  - recap-init
+  - recap-stage-commit
+  - recap-ignore

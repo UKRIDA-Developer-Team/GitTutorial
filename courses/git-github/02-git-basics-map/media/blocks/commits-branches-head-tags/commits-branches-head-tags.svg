@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Commits with branch, HEAD, and tag labels</title>
+  <desc id="desc">A line of commits. The tag v1.0 points to an older commit. The feature branch points to a middle commit. The main branch points to the newest commit, and HEAD points to main.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .commit { fill: #ffffff; stroke: #2f6fb3; stroke-width: 3; }
+      .title { font: 700 24px system-ui, sans-serif; fill: #0f172a; }
+      .hash { font: 600 15px ui-monospace, monospace; fill: #0f172a; }
+      .label { font: 700 16px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .branch { fill: #eef6ff; stroke: #2f6fb3; stroke-width: 2; rx: 8; }
+      .tag { fill: #fff7e6; stroke: #b57912; stroke-width: 2; rx: 8; }
+      .head { fill: #eaf8ef; stroke: #2f8f5b; stroke-width: 2; rx: 8; }
+    </style>
+  </defs>
+
+  <text class="title" x="30" y="48">Labels point to commits</text>
+  <text class="note" x="30" y="76">The commits stay in place. The labels move, or stay fixed, by design.</text>
+
+  <circle class="commit" cx="110" cy="245" r="30"/>
+  <text class="hash" x="100" y="251">A</text>
+  <circle class="commit" cx="270" cy="245" r="30"/>
+  <text class="hash" x="260" y="251">B</text>
+  <circle class="commit" cx="430" cy="245" r="30"/>
+  <text class="hash" x="420" y="251">C</text>
+  <circle class="commit" cx="590" cy="245" r="30"/>
+  <text class="hash" x="580" y="251">D</text>
+
+  <line class="line" x1="142" y1="245" x2="236" y2="245"/>
+  <line class="line" x1="302" y1="245" x2="396" y2="245"/>
+  <line class="line" x1="462" y1="245" x2="556" y2="245"/>
+
+  <rect class="tag" x="226" y="320" width="88" height="38"/>
+  <text class="label" x="244" y="345">v1.0</text>
+  <line x1="270" y1="318" x2="270" y2="279" stroke="#b57912" stroke-width="2"/>
+
+  <rect class="branch" x="382" y="150" width="96" height="38"/>
+  <text class="label" x="397" y="175">feature</text>
+  <line x1="430" y1="188" x2="430" y2="211" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="branch" x="538" y="320" width="72" height="38"/>
+  <text class="label" x="556" y="345">main</text>
+  <line x1="590" y1="318" x2="590" y2="279" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="head" x="640" y="212" width="86" height="38"/>
+  <text class="label" x="658" y="237">HEAD</text>
+  <line x1="638" y1="231" x2="624" y2="231" stroke="#2f8f5b" stroke-width="2"/>
+
+  <text class="note" x="686" y="345">HEAD points to main,</text>
+  <text class="note" x="686" y="369">so main is the current branch.</text>
+</svg>

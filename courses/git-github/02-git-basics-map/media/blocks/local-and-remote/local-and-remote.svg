@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+  <title id="title">A local repository and a remote repository</title>
+  <desc id="desc">A local repository contains your commits and branches. A remote repository is another copy. Push sends commits to the remote, fetch downloads commits from it, and pull combines fetch with a merge into the current branch.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
+      .local { fill: #eef6ff; stroke: #2f6fb3; stroke-width: 2; }
+      .remote { fill: #eaf8ef; stroke: #2f8f5b; stroke-width: 2; }
+      .title { font: 700 24px system-ui, sans-serif; fill: #0f172a; }
+      .label { font: 700 18px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .commit { fill: #ffffff; stroke: #64748b; stroke-width: 2; rx: 7; }
+      .hash { font: 600 14px ui-monospace, monospace; fill: #0f172a; }
+      .push { stroke: #2f6fb3; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .fetch { stroke: #2f8f5b; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text class="title" x="30" y="48">Two copies of one repository</text>
+
+  <rect class="local" x="30" y="92" width="300" height="260" rx="16"/>
+  <text class="label" x="56" y="132">Local repository</text>
+  <text class="note" x="56" y="158">Your commits and branches.</text>
+  <rect class="commit" x="56" y="190" width="248" height="42"/>
+  <text class="hash" x="76" y="217">commit a1b2c3d</text>
+  <rect class="commit" x="56" y="248" width="248" height="42"/>
+  <text class="hash" x="76" y="275">commit d4e5f6a</text>
+
+  <rect class="remote" x="630" y="92" width="300" height="260" rx="16"/>
+  <text class="label" x="656" y="132">Remote repository</text>
+  <text class="note" x="656" y="158">Another copy, usually on a server.</text>
+  <rect class="commit" x="656" y="190" width="248" height="42"/>
+  <text class="hash" x="676" y="217">commit a1b2c3d</text>
+  <rect class="commit" x="656" y="248" width="248" height="42"/>
+  <text class="hash" x="676" y="275">commit d4e5f6a</text>
+
+  <path class="push" d="M 338 180 L 622 180"/>
+  <text class="label" x="430" y="162">git push</text>
+  <text class="note" x="430" y="204">send commits</text>
+
+  <path class="fetch" d="M 622 286 L 338 286"/>
+  <text class="label" x="430" y="316">git fetch</text>
+  <text class="note" x="430" y="338">download commits</text>
+
+  <text class="note" x="356" y="384">git pull = fetch, then merge into the current branch</text>
+</svg>

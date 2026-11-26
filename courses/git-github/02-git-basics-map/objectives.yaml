@@ -1,0 +1,19 @@
+objectives:
+  - id: git.branch.label
+    description: Define a branch as a movable label on a commit.
+  - id: git.branch.move
+    description: Explain how a commit moves the current branch label.
+  - id: git.head.pointer
+    description: Distinguish an attached HEAD from a detached HEAD.
+  - id: git.tag.fixed-label
+    description: Explain how a tag differs from a branch.
+  - id: git.remote.copy
+    description: Describe a remote repository and the roles of push, fetch, and pull.
+  - id: git.fork.pull-request
+    description: Distinguish Git remotes from hosting-platform forks and pull requests.
+  - id: git.history.merge-rebase
+    description: Contrast merging and rebasing two lines of history.
+  - id: git.history.undo-stash
+    description: Choose between revert, reset, restore, and stash for undoing work.
+  - id: git.alias.shortcut
+    description: Explain what a Git alias is and what it does not change.

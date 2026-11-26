@@ -1,0 +1,25 @@
+title: "Git Basics: The Wider Map"
+blocks:
+  - branch-is-a-label
+  - branch-labels-move
+  - head-points
+  - detached-head
+  - tags-are-fixed-labels
+  - commits-branches-head-tags
+  - branch-is-not-a-copy
+  - where-is-head
+  - following-head
+  - remotes-are-other-copies
+  - local-and-remote
+  - fetch-versus-pull
+  - merge-and-rebase
+  - fast-forward-merge
+  - merge-vs-rebase
+  - dont-rebase-shared-history
+  - undo-and-stash
+  - undo-commands
+  - stash-example
+  - aliases-are-shortcuts
+  - recap-labels
+  - recap-remotes
+  - recap-history-operations

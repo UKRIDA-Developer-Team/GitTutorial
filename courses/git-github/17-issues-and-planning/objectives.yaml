@@ -1,0 +1,11 @@
+objectives:
+  - id: git.issue.track
+    description: Explain an issue as a tracked conversation separate from Git history.
+  - id: git.issue.commands
+    description: Create, list, view, comment on, and close issues with gh.
+  - id: git.issue.link
+    description: Link a branch and a pull request to an issue.
+  - id: git.issue.plan
+    description: Use labels, assignees, milestones, and projects to plan work.
+  - id: git.issue.hygiene
+    description: Write and maintain issues that are actionable and safe.

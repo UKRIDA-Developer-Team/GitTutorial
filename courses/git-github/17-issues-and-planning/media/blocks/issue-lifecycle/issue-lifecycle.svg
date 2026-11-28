@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title desc">
+  <title id="title">The issue lifecycle</title>
+  <desc id="desc">An issue moves from open to triage, then to a linked branch, a pull request, merge, and closed. A dashed reopen path returns from closed to open.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box { stroke-width: 2; rx: 12; }
+      .open { fill: #eef6ff; stroke: #2f6fb3; }
+      .triage { fill: #fff7e6; stroke: #b57912; }
+      .code { fill: #eef6ff; stroke: #2f6fb3; }
+      .merge { fill: #eaf8ef; stroke: #2f8f5b; }
+      .closed { fill: #f1f5f9; stroke: #64748b; }
+      .box-title { font: 700 16px system-ui, sans-serif; fill: #0f172a; }
+      .box-note { font: 13px ui-monospace, monospace; fill: #334155; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .reopen { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow-muted); stroke-dasharray: 7 5; }
+      .label { font: 700 14px system-ui, sans-serif; fill: #475569; }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">The issue lifecycle</text>
+  <text class="subtitle" x="40" y="78">The issue tracks the work; the branch and pull request carry the code.</text>
+
+  <rect class="box open" x="40" y="150" width="130" height="90"/>
+  <text class="box-title" x="60" y="182">Open</text>
+  <text class="box-note" x="60" y="210">gh issue create</text>
+
+  <rect class="box triage" x="190" y="150" width="130" height="90"/>
+  <text class="box-title" x="210" y="182">Triage</text>
+  <text class="box-note" x="210" y="210">labels, owner</text>
+
+  <rect class="box code" x="340" y="150" width="130" height="90"/>
+  <text class="box-title" x="360" y="182">Branch</text>
+  <text class="box-note" x="360" y="210">gh issue develop</text>
+
+  <rect class="box code" x="490" y="150" width="130" height="90"/>
+  <text class="box-title" x="510" y="182">Pull request</text>
+  <text class="box-note" x="510" y="210">Closes #42</text>
+
+  <rect class="box merge" x="640" y="150" width="130" height="90"/>
+  <text class="box-title" x="660" y="182">Merge</text>
+  <text class="box-note" x="660" y="210">review + checks</text>
+
+  <rect class="box closed" x="790" y="150" width="130" height="90"/>
+  <text class="box-title" x="810" y="182">Closed</text>
+  <text class="box-note" x="810" y="210">issue state</text>
+
+  <line class="flow" x1="170" y1="195" x2="188" y2="195"/>
+  <line class="flow" x1="320" y1="195" x2="338" y2="195"/>
+  <line class="flow" x1="470" y1="195" x2="488" y2="195"/>
+  <line class="flow" x1="620" y1="195" x2="638" y2="195"/>
+  <line class="flow" x1="770" y1="195" x2="788" y2="195"/>
+
+  <path class="reopen" d="M 855 150 L 855 105 L 105 105 L 105 148"/>
+  <text class="label" x="480" y="97" text-anchor="middle">reopen</text>
+
+  <text class="footer" x="40" y="310">The issue is platform metadata; the branch, commits, and merge are Git history.</text>
+</svg>

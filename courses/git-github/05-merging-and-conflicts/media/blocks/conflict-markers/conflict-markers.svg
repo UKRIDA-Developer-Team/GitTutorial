@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">A conflict records both versions</title>
+  <desc id="desc">The base version, the current branch version, and the merged branch version point to one file. The file contains both edits between conflict markers: seven less-than signs and HEAD, the current branch text, seven equals signs, the other branch text, and seven greater-than signs and the branch name.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { stroke-width: 2; rx: 12; }
+      .base { fill: #f8fafc; stroke: #94a3b8; }
+      .ours { fill: #eef6ff; stroke: #2f6fb3; }
+      .theirs { fill: #fff7e6; stroke: #b57912; }
+      .file { fill: #ffffff; stroke: #334155; }
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box-title { font: 700 17px system-ui, sans-serif; fill: #0f172a; }
+      .side { font: 600 14px system-ui, sans-serif; fill: #475569; }
+      .code { font: 15px ui-monospace, monospace; fill: #0f172a; }
+      .marker { font: 15px ui-monospace, monospace; fill: #b91c1c; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">A conflict records both versions</text>
+  <text class="subtitle" x="40" y="78">Git cannot choose between two edits to the same region, so it writes both into the file.</text>
+
+  <rect class="box base" x="40" y="110" width="260" height="140"/>
+  <text class="box-title" x="60" y="140">Base</text>
+  <text class="side" x="60" y="162">common ancestor</text>
+  <text class="code" x="60" y="196">greeting.txt</text>
+  <text class="code" x="60" y="222">Hello</text>
+
+  <rect class="box ours" x="350" y="110" width="260" height="140"/>
+  <text class="box-title" x="370" y="140">Ours</text>
+  <text class="side" x="370" y="162">main, the current branch</text>
+  <text class="code" x="370" y="196">greeting.txt</text>
+  <text class="code" x="370" y="222">Hello from main</text>
+
+  <rect class="box theirs" x="660" y="110" width="260" height="140"/>
+  <text class="box-title" x="680" y="140">Theirs</text>
+  <text class="side" x="680" y="162">feature, the branch being merged</text>
+  <text class="code" x="680" y="196">greeting.txt</text>
+  <text class="code" x="680" y="222">Hello from feature</text>
+
+  <line class="flow" x1="170" y1="252" x2="250" y2="316"/>
+  <line class="flow" x1="480" y1="252" x2="480" y2="316"/>
+  <line class="flow" x1="790" y1="252" x2="710" y2="316"/>
+
+  <text class="note" x="180" y="303">Git writes both versions into the file</text>
+  <rect class="box file" x="180" y="320" width="600" height="140"/>
+
+  <text class="marker" x="210" y="350">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+  <text class="code" x="210" y="374">Hello from main</text>
+  <text class="marker" x="210" y="398">=======</text>
+  <text class="code" x="210" y="422">Hello from feature</text>
+  <text class="marker" x="210" y="446">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature</text>
+
+  <text class="note" x="180" y="486">Edit to the result you want, remove the markers, then git add and commit.</text>
+</svg>

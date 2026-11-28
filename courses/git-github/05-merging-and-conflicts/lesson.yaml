@@ -1,0 +1,13 @@
+title: Merging and Conflicts
+blocks:
+  - merge-joins-two-lines
+  - merge-a-branch
+  - fast-forward-or-true-merge
+  - why-conflicts-happen
+  - conflict-markers
+  - resolve-a-conflict
+  - inspect-and-abort-a-merge
+  - resolving-without-understanding
+  - which-side-is-ours
+  - recap-merge
+  - recap-conflicts

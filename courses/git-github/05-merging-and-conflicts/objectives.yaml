@@ -1,0 +1,11 @@
+objectives:
+  - id: git.merge.perform
+    description: Merge one branch into another with git merge.
+  - id: git.merge.fast-forward
+    description: Distinguish a fast-forward merge from a true merge commit.
+  - id: git.merge.conflict
+    description: Explain why a merge conflict happens.
+  - id: git.merge.resolve
+    description: Resolve conflict markers and complete a merge.
+  - id: git.merge.abort
+    description: Abort a merge and restore the pre-merge state.

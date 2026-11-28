@@ -1,0 +1,11 @@
+objectives:
+  - id: git.release.version
+    description: Choose a semantic version and tag the commit that was tested.
+  - id: git.release.publish
+    description: Publish a GitHub Release with notes and assets.
+  - id: git.release.sign
+    description: Sign and verify tags and commits for provenance.
+  - id: git.release.dependencies
+    description: Use Dependabot to track dependency updates.
+  - id: git.release.scan
+    description: Respond to secret and code scanning findings.

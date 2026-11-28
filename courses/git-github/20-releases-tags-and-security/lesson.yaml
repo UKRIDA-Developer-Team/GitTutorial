@@ -1,0 +1,16 @@
+title: Releases, Tags, and Security
+blocks:
+  - a-release-is-a-promise
+  - semantic-versioning
+  - a-release-wraps-a-tag
+  - tag-and-publish
+  - release-pipeline
+  - publish-a-release
+  - signed-tags-and-commits
+  - configure-signing
+  - dependabot
+  - secret-and-code-scanning
+  - release-and-security-mistakes
+  - was-the-leaked-secret-removed
+  - recap-version-and-release
+  - recap-signing-and-scanning

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title desc">
+  <title id="title">The release pipeline</title>
+  <desc id="desc">A tested commit is marked with an annotated tag, the tag is pushed, and a GitHub Release adds notes and assets. Consumers resolve the tag and download the release assets.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box { stroke-width: 2; rx: 12; }
+      .commit { fill: #eef6ff; stroke: #2f6fb3; }
+      .tag { fill: #fff7e6; stroke: #b57912; }
+      .release { fill: #eaf8ef; stroke: #2f8f5b; }
+      .assets { fill: #fff7e6; stroke: #b57912; }
+      .box-title { font: 700 17px system-ui, sans-serif; fill: #0f172a; }
+      .box-note { font: 13px ui-monospace, monospace; fill: #334155; }
+      .small { font: 13px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">The release pipeline</text>
+  <text class="subtitle" x="40" y="78">The tag names the commit. The release adds notes and files around that tag.</text>
+
+  <rect class="box commit" x="40" y="150" width="160" height="110"/>
+  <text class="box-title" x="62" y="184">Commit</text>
+  <text class="box-note" x="62" y="212">tested on main</text>
+  <text class="small" x="62" y="238">The exact history</text>
+
+  <rect class="box tag" x="230" y="150" width="160" height="110"/>
+  <text class="box-title" x="252" y="184">Tag</text>
+  <text class="box-note" x="252" y="212">v1.4.0</text>
+  <text class="small" x="252" y="238">Annotated, signed</text>
+
+  <rect class="box commit" x="420" y="150" width="160" height="110"/>
+  <text class="box-title" x="442" y="184">Push tag</text>
+  <text class="box-note" x="442" y="212">git push origin</text>
+  <text class="box-note" x="442" y="234">v1.4.0</text>
+
+  <rect class="box release" x="610" y="150" width="160" height="110"/>
+  <text class="box-title" x="632" y="184">Release</text>
+  <text class="box-note" x="632" y="212">gh release create</text>
+  <text class="small" x="632" y="238">Notes and metadata</text>
+
+  <rect class="box assets" x="800" y="150" width="120" height="110"/>
+  <text class="box-title" x="820" y="184">Assets</text>
+  <text class="box-note" x="820" y="212">binaries</text>
+  <text class="box-note" x="820" y="234">checksums</text>
+
+  <line class="flow" x1="200" y1="205" x2="228" y2="205"/>
+  <line class="flow" x1="390" y1="205" x2="418" y2="205"/>
+  <line class="flow" x1="580" y1="205" x2="608" y2="205"/>
+  <line class="flow" x1="770" y1="205" x2="798" y2="205"/>
+
+  <text class="footer" x="40" y="320">Consumers resolve the tag to the commit and download assets from the release.</text>
+</svg>

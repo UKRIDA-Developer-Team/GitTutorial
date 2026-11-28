@@ -23,9 +23,7 @@ Push the branch and open the pull request:
 
 ```bash
 git push -u origin add-greeting
-gh pr create --base main --head add-greeting \
-  --title "Add greeting" \
-  --body "Adds a greeting file and a short test."
+gh pr create --base main --head add-greeting --title "Add greeting" --body "Adds a greeting file and a short test."
 ```
 
 `gh` prints the pull request URL:

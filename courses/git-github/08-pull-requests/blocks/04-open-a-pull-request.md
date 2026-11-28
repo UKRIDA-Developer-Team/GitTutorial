@@ -15,4 +15,4 @@ title: Open a pull request
 
 A draft pull request is visible but marked not ready for review. It still runs checks and accepts comments, which makes it useful for early feedback. Mark it ready when the work is complete enough to review.
 
-If you omit `--body`, `gh` opens an editor for the description. A useful description says what changed, why, and how to test it.
+If you omit `--body`, `gh` asks for the description interactively. A useful description says what changed, why, and how to test it.

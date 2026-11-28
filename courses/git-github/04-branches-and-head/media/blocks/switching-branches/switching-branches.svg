@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="title desc">
+  <title id="title">Switching branches updates the working tree</title>
+  <desc id="desc">Before switching, HEAD points to feature and the working tree matches the feature commit. After git switch main, HEAD points to main and the working tree matches the main commit. Both branch labels still point to their commits.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="switch-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b57912"/>
+    </marker>
+    <style>
+      .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 14; }
+      .commit { fill: #ffffff; stroke: #2f6fb3; stroke-width: 3; }
+      .hash { font: 600 16px ui-monospace, monospace; fill: #0f172a; }
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .panel-title { font: 700 18px system-ui, sans-serif; fill: #0f172a; }
+      .label { font: 700 15px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .branch { fill: #eef6ff; stroke: #2f6fb3; stroke-width: 2; rx: 8; }
+      .head { fill: #eaf8ef; stroke: #2f8f5b; stroke-width: 2; rx: 8; }
+      .tree { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; rx: 8; }
+      .code { font: 14px ui-monospace, monospace; fill: #0f172a; }
+      .switch { font: 700 15px system-ui, sans-serif; fill: #b57912; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Switching branches updates the working tree</text>
+  <text class="subtitle" x="40" y="78">The commits stay where they are. HEAD moves, and the files on disk change to match.</text>
+
+  <rect class="panel" x="30" y="110" width="380" height="310"/>
+  <text class="panel-title" x="54" y="140">On feature</text>
+
+  <circle class="commit" cx="120" cy="230" r="26"/>
+  <text class="hash" x="112" y="236">C3</text>
+  <circle class="commit" cx="280" cy="230" r="26"/>
+  <text class="hash" x="272" y="236">C4</text>
+  <line class="line" x1="146" y1="230" x2="254" y2="230"/>
+
+  <rect class="branch" x="78" y="268" width="72" height="30"/>
+  <text class="label" x="96" y="289">main</text>
+  <line x1="120" y1="266" x2="120" y2="258" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="branch" x="238" y="268" width="84" height="30"/>
+  <text class="label" x="252" y="289">feature</text>
+  <line x1="280" y1="266" x2="280" y2="258" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="head" x="240" y="160" width="80" height="30"/>
+  <text class="label" x="256" y="180">HEAD</text>
+  <line x1="280" y1="192" x2="280" y2="204" stroke="#2f8f5b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect class="tree" x="54" y="320" width="332" height="76"/>
+  <text class="note" x="68" y="347">Working tree matches C4</text>
+  <text class="code" x="68" y="375">greeting.txt  “Hello, world”</text>
+
+  <line x1="420" y1="250" x2="540" y2="250" stroke="#b57912" stroke-width="3" marker-end="url(#switch-arrow)"/>
+  <text class="switch" x="420" y="232">git switch main</text>
+
+  <rect class="panel" x="550" y="110" width="380" height="310"/>
+  <text class="panel-title" x="574" y="140">After git switch main</text>
+
+  <circle class="commit" cx="640" cy="230" r="26"/>
+  <text class="hash" x="632" y="236">C3</text>
+  <circle class="commit" cx="800" cy="230" r="26"/>
+  <text class="hash" x="792" y="236">C4</text>
+  <line class="line" x1="666" y1="230" x2="774" y2="230"/>
+
+  <rect class="branch" x="598" y="268" width="72" height="30"/>
+  <text class="label" x="616" y="289">main</text>
+  <line x1="640" y1="266" x2="640" y2="258" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="branch" x="758" y="268" width="84" height="30"/>
+  <text class="label" x="772" y="289">feature</text>
+  <line x1="800" y1="266" x2="800" y2="258" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="head" x="600" y="160" width="80" height="30"/>
+  <text class="label" x="616" y="180">HEAD</text>
+  <line x1="640" y1="192" x2="640" y2="204" stroke="#2f8f5b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect class="tree" x="574" y="320" width="332" height="76"/>
+  <text class="note" x="588" y="347">Working tree matches C3</text>
+  <text class="code" x="588" y="375">greeting.txt  “Hello”</text>
+</svg>

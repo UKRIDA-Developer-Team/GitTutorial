@@ -1,0 +1,9 @@
+objectives:
+  - id: git.branch.create
+    description: Create a branch and switch to it with git switch -c.
+  - id: git.branch.switch
+    description: Explain what switching branches changes in the working tree and index.
+  - id: git.branch.manage
+    description: List, rename, and delete branches without losing commits.
+  - id: git.head.recover
+    description: Recover work made on a detached HEAD.

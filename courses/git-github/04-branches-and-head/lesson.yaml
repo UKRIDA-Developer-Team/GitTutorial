@@ -1,0 +1,14 @@
+title: Branches and HEAD
+blocks:
+  - branch-is-a-movable-label
+  - switching-changes-the-working-tree
+  - switching-branches
+  - create-switch-and-list
+  - feature-branch-in-practice
+  - inspect-branch-state
+  - rename-and-delete-branches
+  - switching-with-uncommitted-changes
+  - detached-head-without-fear
+  - keep-work-from-a-detached-head
+  - recap-branch-operations
+  - recap-detached-head

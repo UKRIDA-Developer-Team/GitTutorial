@@ -1,0 +1,15 @@
+title: Review and Merge at Scale
+blocks:
+  - rules-gate-the-merge
+  - branch-protection-and-rulesets
+  - merge-gates-diagram
+  - inspect-the-rules
+  - codeowners
+  - merge-queues
+  - merge-strategy-at-scale
+  - review-at-scale
+  - unblock-a-pull-request
+  - green-is-not-mergeable
+  - why-is-merge-disabled
+  - recap-rules
+  - recap-review-and-merge

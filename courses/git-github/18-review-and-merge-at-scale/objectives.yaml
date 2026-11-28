@@ -1,0 +1,11 @@
+objectives:
+  - id: git.review.policy
+    description: Explain how branch protection and rulesets gate merges.
+  - id: git.review.codeowners
+    description: Explain how CODEOWNERS requests required reviews.
+  - id: git.review.queue
+    description: Explain how a merge queue tests pull requests against the latest base.
+  - id: git.review.strategy
+    description: Choose a merge strategy that fits team history and release policy.
+  - id: git.review.scale
+    description: Diagnose and review pull requests when checks, approvals, and queues interact.

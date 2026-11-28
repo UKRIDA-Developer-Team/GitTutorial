@@ -1,0 +1,15 @@
+title: Authentication and Identity
+blocks:
+  - authentication-is-not-identity
+  - two-kinds-of-identity
+  - identity-and-authentication-diagram
+  - set-your-commit-identity
+  - https-and-tokens
+  - authenticate-with-gh
+  - ssh-keys
+  - set-up-an-ssh-key
+  - switch-a-clone-to-ssh
+  - credentials-are-secrets
+  - gh-works-but-git-push-fails
+  - recap-identity
+  - recap-credentials

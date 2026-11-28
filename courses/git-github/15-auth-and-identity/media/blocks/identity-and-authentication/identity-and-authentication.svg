@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">Identity and authentication are separate</title>
+  <desc id="desc">Commit identity comes from user.name and user.email and is written into each commit. Authentication comes from gh, an HTTPS token, or an SSH key and proves which account is acting. GitHub checks the authenticated account's permission separately.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .panel { stroke-width: 2; rx: 14; }
+      .identity { fill: #eef6ff; stroke: #2f6fb3; }
+      .auth { fill: #fff7e6; stroke: #b57912; }
+      .platform { fill: #eaf8ef; stroke: #2f8f5b; }
+      .panel-title { font: 700 19px system-ui, sans-serif; fill: #0f172a; }
+      .label { font: 15px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 14px ui-monospace, monospace; fill: #334155; }
+      .small { font: 14px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Identity and authentication are separate</text>
+  <text class="subtitle" x="40" y="78">A commit records an author. A push presents a credential. GitHub checks permission after both.</text>
+
+  <rect class="panel identity" x="40" y="120" width="400" height="150"/>
+  <text class="panel-title" x="64" y="154">Commit identity</text>
+  <text class="note" x="64" y="184">user.name</text>
+  <text class="note" x="64" y="208">user.email</text>
+  <text class="small" x="64" y="240">Written into each new commit. Not verified.</text>
+
+  <rect class="panel auth" x="520" y="120" width="400" height="150"/>
+  <text class="panel-title" x="544" y="154">Authentication</text>
+  <text class="note" x="544" y="184">gh auth login</text>
+  <text class="note" x="544" y="208">HTTPS token or SSH key</text>
+  <text class="small" x="544" y="240">Proves which account is acting. Keep it secret.</text>
+
+  <path class="flow" d="M 240 270 L 240 330 L 360 330 L 360 348"/>
+  <path class="flow" d="M 720 270 L 720 330 L 600 330 L 600 348"/>
+
+  <rect class="panel platform" x="180" y="350" width="600" height="80"/>
+  <text class="panel-title" x="204" y="382">GitHub checks the account and its permission</text>
+  <text class="small" x="204" y="410">Read, write, or admin on this repository. Authentication alone does not grant access.</text>
+
+  <text class="footer" x="40" y="455">Changing user.email does not change your login; logging in does not set your commit author.</text>
+</svg>

@@ -1,0 +1,11 @@
+objectives:
+  - id: git.auth.identity
+    description: Distinguish commit identity from account authentication.
+  - id: git.auth.https
+    description: Authenticate Git over HTTPS with a token or credential helper.
+  - id: git.auth.ssh
+    description: Authenticate Git over SSH with a key pair.
+  - id: git.auth.gh
+    description: Use gh to sign in and connect Git to GitHub.
+  - id: git.auth.troubleshoot
+    description: Diagnose a push that uses the wrong credentials.

@@ -1,0 +1,11 @@
+objectives:
+  - id: git.rebase.perform
+    description: Rebase a branch onto a new base.
+  - id: git.rebase.interactive
+    description: Use interactive rebase to edit, squash, or reorder commits.
+  - id: git.rebase.conflict
+    description: Resolve a conflict during a rebase.
+  - id: git.rebase.recover
+    description: Recover from a rebase with the reflog.
+  - id: git.rebase.policy
+    description: Decide when rebasing is safe.

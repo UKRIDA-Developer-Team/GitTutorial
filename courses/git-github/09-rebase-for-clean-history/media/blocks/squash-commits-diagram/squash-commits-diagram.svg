@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="title desc">
+  <title id="title">Squashing commits creates a new commit</title>
+  <desc id="desc">Before squashing, three commits sit in a row with the messages Add greeting, Fix typo, and Add test. After an interactive rebase with squash, one new commit replaces them with the message Add greeting and test. The new commit has a new hash.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .commit { fill: #ffffff; stroke: #2f6fb3; stroke-width: 3; }
+      .new { fill: #eaf8ef; stroke: #2f8f5b; stroke-width: 3; }
+      .hash { font: 600 15px ui-monospace, monospace; fill: #0f172a; }
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .label { font: 600 13px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .before { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 7 5; rx: 14; }
+      .before-label { font: 700 14px system-ui, sans-serif; fill: #64748b; }
+      .panel { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 2; rx: 12; }
+      .panel-title { font: 700 17px system-ui, sans-serif; fill: #0f172a; }
+      .panel-note { font: 14px system-ui, sans-serif; fill: #475569; }
+      .new-hash { font: 700 14px system-ui, sans-serif; fill: #2f8f5b; }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Squashing commits creates a new commit</text>
+  <text class="subtitle" x="40" y="78">Three local commits become one. The changes combine, and the new commit gets a new hash.</text>
+
+  <rect class="before" x="120" y="120" width="460" height="150"/>
+  <text class="before-label" x="140" y="145">before</text>
+
+  <circle class="commit" cx="200" cy="200" r="28"/>
+  <text class="hash" x="192" y="206">C1</text>
+  <circle class="commit" cx="350" cy="200" r="28"/>
+  <text class="hash" x="342" y="206">C2</text>
+  <circle class="commit" cx="500" cy="200" r="28"/>
+  <text class="hash" x="492" y="206">C3</text>
+
+  <line class="line" x1="228" y1="200" x2="322" y2="200"/>
+  <line class="line" x1="378" y1="200" x2="472" y2="200"/>
+
+  <text class="label" x="200" y="255" text-anchor="middle">Add greeting</text>
+  <text class="label" x="350" y="255" text-anchor="middle">Fix typo</text>
+  <text class="label" x="500" y="255" text-anchor="middle">Add test</text>
+
+  <rect class="panel" x="620" y="120" width="300" height="150"/>
+  <text class="panel-title" x="640" y="150">Squash</text>
+  <text class="panel-note" x="640" y="180">Combines changes</text>
+  <text class="panel-note" x="640" y="205">Keeps one message</text>
+  <text class="panel-note" x="640" y="230">Creates a new commit</text>
+  <text class="panel-note" x="640" y="255">Old commits stay in reflog</text>
+
+  <line class="line" x1="350" y1="270" x2="350" y2="318"/>
+  <text class="note" x="365" y="300">git rebase -i</text>
+
+  <circle class="new" cx="350" cy="350" r="30"/>
+  <text class="hash" x="342" y="356">S</text>
+  <text class="label" x="350" y="405" text-anchor="middle">Add greeting and test</text>
+
+  <line x1="405" y1="350" x2="382" y2="350" stroke="#2f8f5b" stroke-width="2"/>
+  <text class="new-hash" x="412" y="355">new hash</text>
+
+  <text class="footer" x="40" y="440">The old commits stay in the reflog; the squashed commit has a new hash.</text>
+</svg>

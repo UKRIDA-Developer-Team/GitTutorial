@@ -1,0 +1,16 @@
+title: Rebase for Clean History
+blocks:
+  - rebase-replays-commits
+  - what-rebase-does
+  - rebase-a-branch
+  - rebasing-a-feature-branch
+  - interactive-rebase
+  - squash-commits-diagram
+  - squashing-commits
+  - conflicts-during-a-rebase
+  - which-side-is-ours-in-a-rebase
+  - rebasing-after-you-push
+  - recover-from-a-bad-rebase
+  - recap-rebase
+  - recap-interactive-rebase
+  - recap-rebase-recovery

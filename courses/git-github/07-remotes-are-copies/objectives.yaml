@@ -1,0 +1,11 @@
+objectives:
+  - id: git.remote.clone
+    description: Clone a repository and identify origin.
+  - id: git.remote.manage
+    description: Add, inspect, rename, and remove remotes.
+  - id: git.remote.tracking
+    description: Explain remote-tracking branches and ahead/behind counts.
+  - id: git.remote.push
+    description: Push a branch and set its upstream.
+  - id: git.remote.diverged
+    description: Recover from a rejected push.

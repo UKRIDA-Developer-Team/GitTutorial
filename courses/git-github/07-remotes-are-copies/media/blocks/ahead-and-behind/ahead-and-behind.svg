@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">Ahead and behind</title>
+  <desc id="desc">A commit graph where main and origin/main share three commits, then diverge. main has one commit the remote does not have, marked ahead 1. origin/main has one commit the local branch does not have, marked behind 1.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .commit { fill: #ffffff; stroke: #2f6fb3; stroke-width: 3; }
+      .hash { font: 600 15px ui-monospace, monospace; fill: #0f172a; }
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .label { font: 700 15px system-ui, sans-serif; fill: #0f172a; }
+      .note { font: 15px system-ui, sans-serif; fill: #475569; }
+      .line { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .main { fill: #eef6ff; stroke: #2f6fb3; stroke-width: 2; rx: 8; }
+      .remote { fill: #fff7e6; stroke: #b57912; stroke-width: 2; rx: 8; }
+      .ahead { fill: none; stroke: #2f8f5b; stroke-width: 2; stroke-dasharray: 6 5; rx: 12; }
+      .behind { fill: none; stroke: #b57912; stroke-width: 2; stroke-dasharray: 6 5; rx: 12; }
+      .ahead-text { font: 700 15px system-ui, sans-serif; fill: #2f8f5b; }
+      .behind-text { font: 700 15px system-ui, sans-serif; fill: #b57912; }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Ahead and behind</text>
+  <text class="subtitle" x="40" y="78">Both counts are measured from the commits the two branches share.</text>
+
+  <circle class="commit" cx="180" cy="220" r="28"/>
+  <text class="hash" x="170" y="226">C1</text>
+  <circle class="commit" cx="340" cy="220" r="28"/>
+  <text class="hash" x="330" y="226">C2</text>
+  <circle class="commit" cx="500" cy="220" r="28"/>
+  <text class="hash" x="490" y="226">C3</text>
+  <circle class="commit" cx="660" cy="220" r="28"/>
+  <text class="hash" x="650" y="226">C4</text>
+  <circle class="commit" cx="660" cy="340" r="28"/>
+  <text class="hash" x="650" y="346">C5</text>
+
+  <line class="line" x1="208" y1="220" x2="312" y2="220"/>
+  <line class="line" x1="368" y1="220" x2="472" y2="220"/>
+  <line class="line" x1="528" y1="220" x2="632" y2="220"/>
+  <line class="line" x1="520" y1="240" x2="640" y2="320"/>
+
+  <rect class="main" x="620" y="270" width="80" height="32"/>
+  <text class="label" x="636" y="291">main</text>
+  <line x1="660" y1="268" x2="660" y2="248" stroke="#2f6fb3" stroke-width="2"/>
+
+  <rect class="remote" x="600" y="390" width="120" height="32"/>
+  <text class="label" x="612" y="411">origin/main</text>
+  <line x1="660" y1="388" x2="660" y2="368" stroke="#b57912" stroke-width="2"/>
+
+  <rect class="ahead" x="620" y="180" width="80" height="80"/>
+  <text class="ahead-text" x="715" y="225">ahead 1</text>
+
+  <rect class="behind" x="620" y="300" width="80" height="80"/>
+  <text class="behind-text" x="715" y="345">behind 1</text>
+
+  <text class="note" x="500" y="270" text-anchor="middle">common ancestor</text>
+
+  <text class="footer" x="40" y="450">origin/main is your last-known remote position. Fetch moves it; push sends your ahead commits.</text>
+  <text class="footer" x="40" y="476">A rejected push means the remote has commits you have not fetched.</text>
+</svg>

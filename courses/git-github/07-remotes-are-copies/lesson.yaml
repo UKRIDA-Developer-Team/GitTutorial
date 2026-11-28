@@ -1,0 +1,14 @@
+title: Remotes are Copies
+blocks:
+  - a-remote-is-another-copy
+  - clone-creates-a-local-copy
+  - inspect-and-manage-remotes
+  - tracking-branches
+  - ahead-and-behind
+  - push-and-set-upstream
+  - fetch-and-integrate
+  - a-remote-round-trip
+  - push-rejected
+  - why-was-my-push-rejected
+  - recap-remotes
+  - recap-tracking

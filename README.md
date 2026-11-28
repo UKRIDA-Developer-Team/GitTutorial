@@ -16,7 +16,7 @@ Most tutorials teach through one medium, usually text with a code block. Learner
 
 | Course | Status | Description |
 | --- | --- | --- |
-| `git-github` | In progress | Git fundamentals and GitHub workflows, taught through the sandbox |
+| `git-github` | Core complete; plumbing pending | Git fundamentals and GitHub workflows, taught through the sandbox |
 | `unix-shell` | Planned | Using the Unix shell (Bash, Zsh) |
 | `windows-shell` | Planned | Using PowerShell and Windows command line |
 
@@ -36,7 +36,7 @@ Shell courses are separate from the Git course. Cross-course links point to each
 | 07 | Remotes are Copies |
 | 08 | Pull Requests |
 | 09 | Rebase for Clean History |
-| 10–14 | Under the hood |
+| 10–14 | Under the hood (deferred) |
 | 15 | Authentication and Identity |
 | 16 | Forks and Upstream |
 | 17 | Issues and Planning |
@@ -45,7 +45,7 @@ Shell courses are separate from the Git course. Cross-course links point to each
 | 20 | Releases, Tags, and Security |
 | 21 | Capstone |
 
-The capstone format is not defined yet. It is exempt from the core lesson block minimum until its format is decided.
+The capstone is a guided end-to-end project. It applies the earlier chapters to one small feature, from issue to release, and uses the existing block types. The under-the-hood chapters 10–14 are deferred.
 
 ### Briefs
 
@@ -339,6 +339,14 @@ GitTutorial/
 │   │   ├── 06-undo-and-recovery/
 │   │   ├── 07-remotes-are-copies/
 │   │   ├── 08-pull-requests/
+│   │   ├── 09-rebase-for-clean-history/
+│   │   ├── 15-auth-and-identity/
+│   │   ├── 16-forks-and-upstream/
+│   │   ├── 17-issues-and-planning/
+│   │   ├── 18-review-and-merge-at-scale/
+│   │   ├── 19-actions-and-ci/
+│   │   ├── 20-releases-tags-and-security/
+│   │   ├── 21-capstone/
 │   │   └── briefs/                  # one folder per brief; more may be added
 │   │       └── nutshell/
 │   │           ├── brief.yaml

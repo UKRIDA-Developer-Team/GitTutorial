@@ -334,6 +334,11 @@ GitTutorial/
 │   │   ├── 01-git-basics-commits/
 │   │   ├── 02-git-basics-map/
 │   │   ├── 03-first-commit/
+│   │   ├── 04-branches-and-head/
+│   │   ├── 05-merging-and-conflicts/
+│   │   ├── 06-undo-and-recovery/
+│   │   ├── 07-remotes-are-copies/
+│   │   ├── 08-pull-requests/
 │   │   └── briefs/                  # one folder per brief; more may be added
 │   │       └── nutshell/
 │   │           ├── brief.yaml

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title desc">
+  <title id="title">From event to check</title>
+  <desc id="desc">A push, pull request, or manual dispatch triggers a workflow file. The workflow runs a job on a runner, the job runs steps, and the result becomes a check on the commit or pull request.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box { stroke-width: 2; rx: 12; }
+      .event { fill: #fff7e6; stroke: #b57912; }
+      .workflow { fill: #eef6ff; stroke: #2f6fb3; }
+      .job { fill: #eaf8ef; stroke: #2f8f5b; }
+      .steps { fill: #eef6ff; stroke: #2f6fb3; }
+      .box-title { font: 700 17px system-ui, sans-serif; fill: #0f172a; }
+      .box-note { font: 13px ui-monospace, monospace; fill: #334155; }
+      .small { font: 13px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">From event to check</text>
+  <text class="subtitle" x="40" y="78">An event starts a workflow; a job runs steps on a fresh runner; the result reports back to Git.</text>
+
+  <rect class="box event" x="40" y="150" width="190" height="120"/>
+  <text class="box-title" x="62" y="184">Event</text>
+  <text class="box-note" x="62" y="212">push</text>
+  <text class="box-note" x="62" y="234">pull_request</text>
+  <text class="box-note" x="62" y="256">workflow_dispatch</text>
+
+  <rect class="box workflow" x="270" y="150" width="210" height="120"/>
+  <text class="box-title" x="292" y="184">Workflow</text>
+  <text class="box-note" x="292" y="212">.github/workflows/</text>
+  <text class="box-note" x="292" y="234">ci.yml</text>
+  <text class="small" x="292" y="258">YAML in the repository</text>
+
+  <rect class="box job" x="520" y="150" width="180" height="120"/>
+  <text class="box-title" x="542" y="184">Job</text>
+  <text class="box-note" x="542" y="212">runs-on:</text>
+  <text class="box-note" x="542" y="234">ubuntu-latest</text>
+  <text class="small" x="542" y="258">A fresh runner</text>
+
+  <rect class="box steps" x="740" y="150" width="180" height="120"/>
+  <text class="box-title" x="762" y="184">Steps</text>
+  <text class="box-note" x="762" y="212">checkout</text>
+  <text class="box-note" x="762" y="234">setup-node</text>
+  <text class="box-note" x="762" y="256">npm ci, npm test</text>
+
+  <line class="flow" x1="230" y1="210" x2="268" y2="210"/>
+  <line class="flow" x1="480" y1="210" x2="518" y2="210"/>
+  <line class="flow" x1="700" y1="210" x2="738" y2="210"/>
+
+  <text class="footer" x="40" y="330">The job's result becomes a check on the commit or pull request; branch protection can require it.</text>
+</svg>

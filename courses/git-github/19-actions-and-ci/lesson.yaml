@@ -1,0 +1,15 @@
+title: Actions and CI
+blocks:
+  - ci-runs-on-events
+  - workflow-anatomy
+  - workflow-diagram
+  - a-minimal-workflow
+  - triggers
+  - run-and-inspect-workflows
+  - jobs-matrix-and-artifacts
+  - secrets-and-permissions
+  - pull-request-target
+  - debug-a-failed-run
+  - passes-locally-fails-in-ci
+  - recap-workflows
+  - recap-secrets-and-debugging

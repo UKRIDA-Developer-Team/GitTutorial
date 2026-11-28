@@ -1,0 +1,11 @@
+objectives:
+  - id: git.ci.workflow
+    description: Explain workflows, jobs, steps, runners, and actions.
+  - id: git.ci.triggers
+    description: Choose events and filters that start a workflow.
+  - id: git.ci.run
+    description: Run and inspect workflows with gh.
+  - id: git.ci.secrets
+    description: Handle secrets, tokens, and permissions safely.
+  - id: git.ci.debug
+    description: Diagnose a workflow that fails in CI.

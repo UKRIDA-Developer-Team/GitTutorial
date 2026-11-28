@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title desc">
+  <title id="title">The capstone flow</title>
+  <desc id="desc">An issue leads to a branch, commits, a pull request with review and checks, a merge, and a tagged release. The local main branch is synced after the merge.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box { stroke-width: 2; rx: 12; }
+      .plan { fill: #fff7e6; stroke: #b57912; }
+      .git { fill: #eef6ff; stroke: #2f6fb3; }
+      .platform { fill: #eaf8ef; stroke: #2f8f5b; }
+      .release { fill: #fff7e6; stroke: #b57912; }
+      .box-title { font: 700 16px system-ui, sans-serif; fill: #0f172a; }
+      .box-note { font: 12px ui-monospace, monospace; fill: #334155; }
+      .small { font: 12px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">The capstone flow</text>
+  <text class="subtitle" x="40" y="78">One feature travels from a definition of done to a released commit.</text>
+
+  <rect class="box plan" x="40" y="145" width="130" height="110"/>
+  <text class="box-title" x="58" y="178">Issue</text>
+  <text class="box-note" x="58" y="206">gh issue create</text>
+  <text class="small" x="58" y="232">definition of done</text>
+
+  <rect class="box git" x="190" y="145" width="130" height="110"/>
+  <text class="box-title" x="208" y="178">Branch</text>
+  <text class="box-note" x="208" y="206">git switch -c</text>
+  <text class="small" x="208" y="232">isolated work</text>
+
+  <rect class="box git" x="340" y="145" width="130" height="110"/>
+  <text class="box-title" x="358" y="178">Commits</text>
+  <text class="box-note" x="358" y="206">git commit</text>
+  <text class="small" x="358" y="232">code, tests, docs</text>
+
+  <rect class="box platform" x="490" y="145" width="130" height="110"/>
+  <text class="box-title" x="508" y="178">Pull request</text>
+  <text class="box-note" x="508" y="206">review + checks</text>
+  <text class="small" x="508" y="232">Closes #42</text>
+
+  <rect class="box platform" x="640" y="145" width="130" height="110"/>
+  <text class="box-title" x="658" y="178">Merge</text>
+  <text class="box-note" x="658" y="206">gh pr merge</text>
+  <text class="small" x="658" y="232">sync main</text>
+
+  <rect class="box release" x="790" y="145" width="130" height="110"/>
+  <text class="box-title" x="808" y="178">Release</text>
+  <text class="box-note" x="808" y="206">tag + notes</text>
+  <text class="small" x="808" y="232">v1.1.0</text>
+
+  <line class="flow" x1="170" y1="200" x2="188" y2="200"/>
+  <line class="flow" x1="320" y1="200" x2="338" y2="200"/>
+  <line class="flow" x1="470" y1="200" x2="488" y2="200"/>
+  <line class="flow" x1="620" y1="200" x2="638" y2="200"/>
+  <line class="flow" x1="770" y1="200" x2="788" y2="200"/>
+
+  <text class="footer" x="40" y="320">The issue defines done; review and checks gate the merge; the tag names the released commit.</text>
+</svg>

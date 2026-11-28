@@ -1,0 +1,9 @@
+objectives:
+  - id: git.capstone.plan
+    description: Turn a small feature request into an issue and a branch.
+  - id: git.capstone.history
+    description: Build a focused commit history and integrate the latest base.
+  - id: git.capstone.collaborate
+    description: Open a pull request, respond to review, and merge through checks.
+  - id: git.capstone.release
+    description: Tag the merged commit and publish a release.

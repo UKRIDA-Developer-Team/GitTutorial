@@ -1,0 +1,11 @@
+objectives:
+  - id: git.pr.concept
+    description: Explain a pull request as a platform conversation about a branch.
+  - id: git.pr.open
+    description: Prepare a branch and open a pull request with gh.
+  - id: git.pr.review
+    description: Update a pull request in response to review.
+  - id: git.pr.merge
+    description: Merge a pull request and clean up.
+  - id: git.pr.checks
+    description: Explain how CI checks and review gate a pull request.

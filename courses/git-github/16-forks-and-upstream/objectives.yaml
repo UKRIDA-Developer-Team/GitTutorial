@@ -1,0 +1,9 @@
+objectives:
+  - id: git.fork.choose
+    description: Decide between a branch and a fork.
+  - id: git.fork.setup
+    description: Create a fork, clone it, and identify origin and upstream.
+  - id: git.fork.sync
+    description: Sync a fork and local clone with the upstream repository.
+  - id: git.fork.contribute
+    description: Open a pull request from a fork to its upstream.

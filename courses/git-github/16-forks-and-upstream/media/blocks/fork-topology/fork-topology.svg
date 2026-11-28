@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">Fork topology</title>
+  <desc id="desc">The upstream repository is copied to a fork under your account. A local clone pushes to origin, the fork, and can fetch from upstream, the source. A pull request goes from the fork back to upstream.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .box { stroke-width: 2; rx: 14; }
+      .upstream { fill: #eef6ff; stroke: #2f6fb3; }
+      .fork { fill: #fff7e6; stroke: #b57912; }
+      .clone { fill: #eaf8ef; stroke: #2f8f5b; }
+      .box-title { font: 700 19px system-ui, sans-serif; fill: #0f172a; }
+      .box-note { font: 14px ui-monospace, monospace; fill: #334155; }
+      .box-small { font: 14px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .fetch { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow-muted); stroke-dasharray: 7 5; }
+      .label { font: 700 14px system-ui, sans-serif; fill: #475569; }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Fork topology</text>
+  <text class="subtitle" x="40" y="78">A fork is a separate repository. A clone has a remote for the fork and a remote for the source.</text>
+
+  <rect class="box upstream" x="40" y="160" width="250" height="120"/>
+  <text class="box-title" x="64" y="194">Upstream</text>
+  <text class="box-note" x="64" y="222">team/recipes</text>
+  <text class="box-small" x="64" y="252">The source repository</text>
+
+  <rect class="box fork" x="355" y="160" width="250" height="120"/>
+  <text class="box-title" x="379" y="194">Your fork</text>
+  <text class="box-note" x="379" y="222">ada/recipes</text>
+  <text class="box-small" x="379" y="252">You can push here</text>
+
+  <rect class="box clone" x="670" y="160" width="250" height="120"/>
+  <text class="box-title" x="694" y="194">Local clone</text>
+  <text class="box-note" x="694" y="222">origin → fork</text>
+  <text class="box-note" x="694" y="246">upstream → source</text>
+  <text class="box-small" x="694" y="270">Your working tree</text>
+
+  <line class="flow" x1="290" y1="220" x2="353" y2="220"/>
+  <text class="label" x="322" y="207" text-anchor="middle">fork</text>
+
+  <line class="flow" x1="670" y1="220" x2="607" y2="220"/>
+  <text class="label" x="638" y="207" text-anchor="middle">push</text>
+
+  <path class="fetch" d="M 165 160 L 165 105 L 795 105 L 795 158"/>
+  <text class="label" x="480" y="97" text-anchor="middle">git fetch upstream</text>
+
+  <path class="flow" d="M 480 280 L 480 360 L 165 360 L 165 282"/>
+  <text class="label" x="480" y="352" text-anchor="middle">pull request</text>
+
+  <text class="footer" x="40" y="435">The pull request compares a branch in the fork with a branch in upstream.</text>
+</svg>

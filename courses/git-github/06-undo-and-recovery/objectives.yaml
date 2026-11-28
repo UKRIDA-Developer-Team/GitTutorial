@@ -1,0 +1,11 @@
+objectives:
+  - id: git.undo.revert
+    description: Undo a shared commit without rewriting history.
+  - id: git.undo.reset-modes
+    description: Choose soft, mixed, or hard reset and predict what changes.
+  - id: git.undo.restore
+    description: Restore working-tree and staged files.
+  - id: git.undo.reflog
+    description: Recover a lost commit with the reflog.
+  - id: git.undo.amend
+    description: Amend the last commit safely.

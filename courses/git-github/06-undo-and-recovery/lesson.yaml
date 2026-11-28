@@ -1,0 +1,15 @@
+title: Undo and Recovery
+blocks:
+  - undo-depends-on-what-changed
+  - choose-the-undo
+  - undo-decision-map
+  - revert-a-shared-commit
+  - undo-a-pushed-change
+  - reset-modes
+  - hard-reset-discards-work
+  - reflog-finds-lost-commits
+  - recover-after-a-hard-reset
+  - restore-and-amend
+  - which-undo-fits
+  - recap-revert-and-reset
+  - recap-reflog

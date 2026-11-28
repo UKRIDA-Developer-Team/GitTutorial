@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="title desc">
+  <title id="title">Choosing an undo</title>
+  <desc id="desc">A decision map from the question what are you undoing. A shared commit uses git revert, which adds a correcting commit. A local commit uses git reset, which moves the branch. A file or the index uses git restore, which changes a file. A lost commit uses git reflog, which finds the hash.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .start { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 12; }
+      .box { stroke-width: 2; rx: 12; }
+      .safe { fill: #eaf8ef; stroke: #2f8f5b; }
+      .local { fill: #eef6ff; stroke: #2f6fb3; }
+      .file { fill: #f8fafc; stroke: #94a3b8; }
+      .recover { fill: #fff7e6; stroke: #b57912; }
+      .title { font: 700 26px system-ui, sans-serif; fill: #0f172a; }
+      .subtitle { font: 16px system-ui, sans-serif; fill: #475569; }
+      .question { font: 700 19px system-ui, sans-serif; fill: #0f172a; }
+      .box-title { font: 700 17px system-ui, sans-serif; fill: #0f172a; }
+      .command { font: 600 16px ui-monospace, monospace; fill: #0f172a; }
+      .note { font: 14px system-ui, sans-serif; fill: #475569; }
+      .flow { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .footer { font: 15px system-ui, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text class="title" x="40" y="48">Choosing an undo</text>
+  <text class="subtitle" x="40" y="78">The right tool depends on what changed and who already has the history.</text>
+
+  <rect class="start" x="330" y="105" width="300" height="55"/>
+  <text class="question" x="480" y="139" text-anchor="middle">What are you undoing?</text>
+
+  <line class="flow" x1="480" y1="162" x2="140" y2="225"/>
+  <line class="flow" x1="480" y1="162" x2="360" y2="225"/>
+  <line class="flow" x1="480" y1="162" x2="580" y2="225"/>
+  <line class="flow" x1="480" y1="162" x2="800" y2="225"/>
+
+  <rect class="box safe" x="40" y="230" width="200" height="120"/>
+  <text class="box-title" x="60" y="262">Shared commit</text>
+  <text class="command" x="60" y="298">git revert</text>
+  <text class="note" x="60" y="326">adds a commit</text>
+
+  <rect class="box local" x="260" y="230" width="200" height="120"/>
+  <text class="box-title" x="280" y="262">Local commit</text>
+  <text class="command" x="280" y="298">git reset</text>
+  <text class="note" x="280" y="326">moves the branch</text>
+
+  <rect class="box file" x="480" y="230" width="200" height="120"/>
+  <text class="box-title" x="500" y="262">File or index</text>
+  <text class="command" x="500" y="298">git restore</text>
+  <text class="note" x="500" y="326">changes a file</text>
+
+  <rect class="box recover" x="700" y="230" width="200" height="120"/>
+  <text class="box-title" x="720" y="262">Lost commit</text>
+  <text class="command" x="720" y="298">git reflog</text>
+  <text class="note" x="720" y="326">finds the hash</text>
+
+  <text class="footer" x="40" y="400">Shared history is the dividing line: revert adds, reset rewrites.</text>
+  <text class="footer" x="40" y="426">When in doubt, prefer revert for shared commits and restore for files.</text>
+</svg>
